@@ -3,7 +3,7 @@ public class Main {
         System.out.println("Så er der kage!");
         System.out.println("Jaaaeeerr!!");
         System.out.println("Men er der kaffe?....");
-        System.out.println("Tee anybody?....");
+        System.out.println("Tee anybody?...");
     }
 
 }
