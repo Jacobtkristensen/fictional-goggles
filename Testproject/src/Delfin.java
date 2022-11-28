@@ -1,4 +1,4 @@
-public class Main {
+public class Delfin {
     public static void main(String[] args) {
         System.out.println("Så er der kage!");
         System.out.println("Jaaaeeerr!!");
