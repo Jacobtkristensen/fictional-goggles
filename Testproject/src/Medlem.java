@@ -1,3 +1,5 @@
+import java.util.Date;
+
 public abstract class Medlem implements Kontingent {
 
 	private int medlemsnummer;
