@@ -3,7 +3,7 @@ import java.time.LocalDateTime;
 import java.time.Period;
 
 
-public class Medlem implements Kontingent {
+public class Medlem {
 	private static int medlemmer=1;
 	private int medlemsnummer;
 	private String navn;
@@ -34,7 +34,7 @@ public class Medlem implements Kontingent {
 	}
 
 
-	@Override
+
 	public double beregnKontingent() {
 		double rabat = 0.75;
 		double kontingent = 1600;
