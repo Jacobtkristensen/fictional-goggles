@@ -13,11 +13,11 @@ public class Delfinen {
 		System.out.println("indtast medlemsnavn: ");
 		String navn= sc.next();
 		System.out.println(" indtast fødselsdag som YYYY-MM-DD: ");
-		DateTimeFormatter format = DateTimeFormatter.ofPattern("YYYY-MM-DD");
+		//DateTimeFormatter format = DateTimeFormatter.ofPattern("YYYY-MM-DD");
 		String date =sc.next();
 
 		//convert String to LocalDate
-		LocalDate bday = LocalDate.parse(date, format);
+		LocalDate bday = LocalDate.parse(date);
 
 
 
@@ -26,16 +26,16 @@ public class Delfinen {
 
 		System.out.println(" indtast køn: M/K: ");
 		boolean gender=false;
-		if (sc.next().equals("M")||sc.next().equals("m")){
+		if (sc.next().equalsIgnoreCase("M")){
 			gender=true;
 		}
 		System.out.println("ønsker du at være aktivt medlem? [J/N]");
-		if (sc.next()=="n"||sc.next()=="n"){
+		if (sc.next().equalsIgnoreCase("N")){
 			Medlem nytmedlem=new PassivMedlem(navn,bday,gender);
 			medlemmer.add(nytmedlem);
 		}
 		System.out.println("ønsker du at være konkurrencesvømmer? [J/N]");
-		if (sc.next()=="n"||sc.next()=="n") {
+		if (sc.next().equalsIgnoreCase("n")) {
 			Medlem nytmedlem = new Medlem(navn, bday, gender);
 			medlemmer.add(nytmedlem);
 		}

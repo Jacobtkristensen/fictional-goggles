@@ -11,7 +11,7 @@ public class Juniorsvømmer extends Konkurrencesvømmer {
 		this.aktivdisciplin=setAktivDiscipliner(aktivdisciplin);
 	}
 
-	public void setAktivDiscipliner(String disciplinset) {
+	public boolean[] setAktivDiscipliner(String disciplinset) {
 		if(disciplinset.contains("b")){
 			aktivdisciplin[0]=true;
 		}
@@ -24,6 +24,7 @@ public class Juniorsvømmer extends Konkurrencesvømmer {
 		if(disciplinset.contains("f")){
 			aktivdisciplin[3]=true;
 		}
+		return aktivdisciplin;
 	}
 
 	@Override
