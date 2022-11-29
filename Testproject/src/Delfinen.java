@@ -12,7 +12,6 @@ public class Delfinen {
 		String navn= sc.next();
 		System.out.println(" indtast fødselsdag som YYYY-MM-DD: ");
 		LocalDate bday=sc.next();
-		System.out.println("bla");
 		System.out.println(" indtast køn: M/K: ");
 		boolean gender;
 		if (sc.next()=="M"||sc.next()="m"){
@@ -33,11 +32,11 @@ public class Delfinen {
 		System.out.println("brystsvømnin=b, crawl=c, ryg=r, butterfly=f");
 		aktivdisciplin=aktivdisciplin.concat(sc.next());
 		if(Medlem.getAlder(bday)<18){
-			Medlem nytmedlem=new Juniorsvømmer(String navn, LocalDate bday, boolean gender,String aktivdisciplin);
+			Medlem nytmedlem=new Juniorsvømmer(navn, bday, gender, aktivdisciplin);
 			medlemmer.add(nytmedlem);
 		}
 		else{
-			Medlem nytmedlem=Seniorsvømmer(String navn, LocalDate bday, boolean gender,String aktivdisciplin);
+			Medlem nytmedlem=Seniorsvømmer(navn, bday, gender, aktivdisciplin);
 			medlemmer.add(nytmedlem);
 		}
 
