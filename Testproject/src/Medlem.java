@@ -3,7 +3,7 @@ import java.time.LocalDateTime;
 import java.time.Period;
 
 
-public class Medlem implements Kontingent {
+public class Medlem {
 	private static int medlemmer=1;
 	private int medlemsnummer;
 	private String navn;
@@ -11,7 +11,6 @@ public class Medlem implements Kontingent {
 	private boolean gender;
 
 	private double kontingent = 0;
-	private boolean aktiv;
 
 	public Medlem(String navn, LocalDate fødseldag, boolean gender){
 		medlemsnummer=medlemmer;
@@ -25,7 +24,7 @@ public class Medlem implements Kontingent {
 	 * 
 	 * @param fødselsdag
 	 */
-	public int getAlder(LocalDate fødselsdag) {
+	public static int getAlder(LocalDate fødselsdag) {
 		// TODO - implement Medlem.getAlder
 
 		LocalDate today = LocalDate.now();
@@ -35,9 +34,8 @@ public class Medlem implements Kontingent {
 	}
 
 
-	@Override
+
 	public double beregnKontingent() {
-		double passiv = 500;
 		double rabat = 0.75;
 		double kontingent = 1600;
 		double kontingentUng = 1000;
@@ -46,10 +44,6 @@ public class Medlem implements Kontingent {
 		}
 		else if (getAlder() < 18) {
 			return kontingentUng;
-		}
-		else if (this.aktiv == false) {
-			return passiv;
-
 		}
 		else {
 			return kontingent;
