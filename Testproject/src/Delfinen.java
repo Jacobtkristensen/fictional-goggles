@@ -12,7 +12,6 @@ public class Delfinen {
 		String navn= sc.next();
 		System.out.println(" indtast fødselsdag som YYYY-MM-DD: ");
 		LocalDate bday=sc.next();
-		System.out.println("bla");
 		System.out.println(" indtast køn: M/K: ");
 		boolean gender;
 		if (sc.next()=="M"||sc.next()="m"){
