@@ -24,7 +24,7 @@ public class Medlem {
 	 * 
 	 * @param fødselsdag
 	 */
-	public int getAlder(LocalDate fødselsdag) {
+	public static int getAlder(LocalDate fødselsdag) {
 		// TODO - implement Medlem.getAlder
 
 		LocalDate today = LocalDate.now();
