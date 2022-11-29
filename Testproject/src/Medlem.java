@@ -23,7 +23,7 @@ public class Medlem implements Kontingent {
 
 	/**
 	 * 
-	 * @param f�dselsdag
+	 * @param fødselsdag
 	 */
 	public int getAlder(LocalDate fødselsdag) {
 		// TODO - implement Medlem.getAlder
@@ -40,12 +40,12 @@ public class Medlem implements Kontingent {
 		double passiv = 500;
 		double rabat = 0.75;
 		double kontingent = 1600;
-		double kontingentung = 1000;
+		double kontingentUng = 1000;
 		if (getAlder() > 60) {
 			return rabat * kontingent;
 		}
 		else if (getAlder() < 18) {
-			return kontingentung;
+			return kontingentUng;
 		}
 		else if (this.aktiv == false) {
 			return passiv;
