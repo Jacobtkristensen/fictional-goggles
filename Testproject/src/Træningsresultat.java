@@ -1,7 +1,7 @@
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-public class Træningsreultat {
+public class Træningsresultat {
 
 	private LocalDate træningsdato;
 	private LocalTime træningstid;
