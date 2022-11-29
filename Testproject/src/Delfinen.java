@@ -1,20 +1,32 @@
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Delfinen {
 
-	ArrayList<Medlem> medlemmer=new ArrayList<>();
-	public void opretMedlem(medlemmer) {
+
+
+	public static void opretMedlem(ArrayList<Medlem> medlemmer) {
 		// TODO - implement Delfinen.opretMedlem
 		Scanner sc=new Scanner(System.in);
 		System.out.println("indtast medlemsnavn: ");
 		String navn= sc.next();
 		System.out.println(" indtast fødselsdag som YYYY-MM-DD: ");
-		LocalDate bday=sc.next();
+		DateTimeFormatter format = DateTimeFormatter.ofPattern("YYYY-MM-DD");
+		String date =sc.next();
+
+		//convert String to LocalDate
+		LocalDate bday = LocalDate.parse(date, format);
+
+
+
+
+
+
 		System.out.println(" indtast køn: M/K: ");
-		boolean gender;
-		if (sc.next()=="M"||sc.next()="m"){
+		boolean gender=false;
+		if (sc.next().equals("M")||sc.next().equals("m")){
 			gender=true;
 		}
 		System.out.println("ønsker du at være aktivt medlem? [J/N]");
@@ -36,7 +48,7 @@ public class Delfinen {
 			medlemmer.add(nytmedlem);
 		}
 		else{
-			Medlem nytmedlem=Seniorsvømmer(navn, bday, gender, aktivdisciplin);
+			Medlem nytmedlem=new Seniorsvømmer(navn, bday, gender, aktivdisciplin);
 			medlemmer.add(nytmedlem);
 		}
 
@@ -60,9 +72,10 @@ public class Delfinen {
 		throw new UnsupportedOperationException();
 	}
 
-	public static void main() {
+	public static void main(String[] args) {
 		// TODO - implement Delfinen.main
-		//throw new UnsupportedOperationException();
+		ArrayList<Medlem> medlemmer=new ArrayList<>();
+		opretMedlem(medlemmer);
 
 		System.out.println("hej");
 	}
