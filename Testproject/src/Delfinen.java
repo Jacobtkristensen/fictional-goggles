@@ -23,8 +23,10 @@ public class Delfinen {
 			medlemmer.add(nytmedlem);
 		}
 		System.out.println("ønsker du at være konkurrencesvømmer? [J/N]");
-		if (sc.next()=="n"||sc.next()=="n"){
-			Medlem nytmedlem=new Motionist(navn,bday,gender);
+		if (sc.next()=="n"||sc.next()=="n") {
+			Medlem nytmedlem = new Medlem(navn, bday, gender);
+			medlemmer.add(nytmedlem);
+		}
 
 		// tilføj nyt medlem til ArrayList
 
