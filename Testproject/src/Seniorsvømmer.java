@@ -12,7 +12,7 @@ public class Seniorsvømmer extends Konkurrencesvømmer {
 	}
 
 
-	public void setAktivDiscipliner(String disciplinset) {
+	public boolean[] setAktivDiscipliner(String disciplinset) {
 		if(disciplinset.contains("b")){
 			aktivdisciplin[0]=true;
 		}
@@ -25,6 +25,7 @@ public class Seniorsvømmer extends Konkurrencesvømmer {
 		if(disciplinset.contains("f")){
 			aktivdisciplin[3]=true;
 		}
+		return aktivdisciplin;
 	}
 	public void GetResults() {
 		System.out.println("to be implemented");

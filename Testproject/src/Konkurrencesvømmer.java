@@ -2,10 +2,12 @@ import java.time.LocalDate;
 
 public abstract class Konkurrencesvømmer extends Medlem {
 	private boolean[] aktivdisciplin=new boolean[4];
-	public Konkurrencesvømmer(String navn, LocalDate bday, boolean gender, String disciplinset){
+	public Konkurrencesvømmer(String navn, LocalDate bday, boolean gender){
 		super(navn,bday,gender);
-		this.aktivdisciplin=setAktivDiscipliner(disciplinset);
+		//this.aktivdisciplin=setAktivDiscipliner(disciplinset);
 	}
+
+
 
 	public boolean[] setAktivDiscipliner(String disciplinset) {
 		if(disciplinset.contains("b")){
