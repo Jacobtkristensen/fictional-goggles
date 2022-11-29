@@ -7,7 +7,7 @@ public class Delfinen {
 
 
 
-	public static void opretMedlem(ArrayList<Medlem> medlemmer) {
+	public static ArrayList<Medlem> opretMedlem(ArrayList<Medlem> medlemmer) {
 		// TODO - implement Delfinen.opretMedlem
 		Scanner sc=new Scanner(System.in);
 		System.out.println("indtast medlemsnavn: ");
@@ -33,24 +33,24 @@ public class Delfinen {
 		if (sc.next().equalsIgnoreCase("N")){
 			Medlem nytmedlem=new PassivMedlem(navn,bday,gender);
 			medlemmer.add(nytmedlem);
+			return medlemmer;
 		}
 		System.out.println("ønsker du at være konkurrencesvømmer? [J/N]");
 		if (sc.next().equalsIgnoreCase("n")) {
 			Medlem nytmedlem = new Medlem(navn, bday, gender);
 			medlemmer.add(nytmedlem);
+			return medlemmer;
 		}
 		String aktivdisciplin="";
 		System.out.println("tast de discipliner du vil stille op i, uden komma i mellem: ");
 		System.out.println("brystsvømnin=b, crawl=c, ryg=r, butterfly=f");
 		aktivdisciplin=aktivdisciplin.concat(sc.next());
-		if(Medlem.getAlder(bday)<18){
-			Medlem nytmedlem=new Juniorsvømmer(navn, bday, gender, aktivdisciplin);
+
+			Medlem nytmedlem=new Konkurrencesvømmer(navn, bday, gender, aktivdisciplin);
 			medlemmer.add(nytmedlem);
-		}
-		else{
-			Medlem nytmedlem=new Seniorsvømmer(navn, bday, gender, aktivdisciplin);
-			medlemmer.add(nytmedlem);
-		}
+			return medlemmer;
+
+
 
 		// tilføj nyt medlem til ArrayList
 
