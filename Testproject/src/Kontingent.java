@@ -1,5 +1,5 @@
 public interface Kontingent {
 
-	abstract double beregnKontingent();
+	double beregnKontingent();
 
 }

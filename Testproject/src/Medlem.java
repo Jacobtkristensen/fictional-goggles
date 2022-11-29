@@ -10,6 +10,9 @@ public class Medlem implements Kontingent {
 	private LocalDate fødseldag;
 	private boolean gender;
 
+	private double kontingent = 0;
+	private boolean aktiv;
+
 	public Medlem(String navn, LocalDate fødseldag, boolean gender){
 		medlemsnummer=medlemmer;
 		medlemmer++;
@@ -32,4 +35,24 @@ public class Medlem implements Kontingent {
 	}
 
 
+	@Override
+	public double beregnKontingent() {
+		double passiv = 500;
+		double rabat = 0.75;
+		double kontingent = 1600;
+		double kontingentung = 1000;
+		if (getAlder() > 60) {
+			return rabat * kontingent;
+		}
+		else if (getAlder() < 18) {
+			return kontingentung;
+		}
+		else if (this.aktiv == false) {
+			return passiv;
+
+		}
+		else {
+			return kontingent;
+		}
+	}
 }
