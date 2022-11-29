@@ -3,11 +3,11 @@ import java.time.LocalDate;
 public class Juniorsvømmer extends Konkurrencesvømmer {
 
 	private Svømmedisciplin[] discipliner;
-	private boolean[] aktivdisciplin=boolean[4];
+	private boolean[] aktivdisciplin= new boolean[4];
 	//Brystsvømning, Crawl, Rygsvømning, Butterfly
 
-	public Juniorsvømmer(String navn, LocalDate fødseldag, boolean gender, String aktivdisciplin){
-		super(navn,fødseldag,gender);
+	public Juniorsvømmer(String navn, LocalDate foedselsdag, boolean gender, String aktivdisciplin){
+		super(navn,foedselsdag,gender);
 		this.aktivdisciplin=setAktivDiscipliner(aktivdisciplin);
 	}
 
@@ -26,4 +26,13 @@ public class Juniorsvømmer extends Konkurrencesvømmer {
 		}
 	}
 
+	@Override
+	public void GetResults() {
+		System.out.println("to be implemented");
+	}
+
+	@Override
+	public void tilføjDisciplin() {
+		System.out.println("kommer");
+	}
 }

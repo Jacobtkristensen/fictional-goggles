@@ -2,8 +2,8 @@ import java.time.LocalDate;
 
 public class Seniorsvømmer extends Konkurrencesvømmer {
 
-	private Svømmedisciplin[] discipliner=Svømmedisciplin[4];
-	private boolean[] aktivdisciplin=boolean[4];
+	private Svømmedisciplin[] discipliner=new Svømmedisciplin[4];
+	private boolean[] aktivdisciplin= new boolean[4];
 	//Brystsvømning, Crawl, Rygsvømning, Butterfly
 
 	public Seniorsvømmer(String navn, LocalDate fødseldag, boolean gender,String aktivdisciplin){
@@ -25,5 +25,13 @@ public class Seniorsvømmer extends Konkurrencesvømmer {
 		if(disciplinset.contains("f")){
 			aktivdisciplin[3]=true;
 		}
+	}
+	public void GetResults() {
+		System.out.println("to be implemented");
+	}
+
+	@Override
+	public void tilføjDisciplin() {
+		System.out.println("kommer");
 	}
 }

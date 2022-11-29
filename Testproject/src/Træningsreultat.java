@@ -1,6 +1,9 @@
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 public class Træningsreultat {
 
-	private Date træningsdato;
-	private Time træningstid;
+	private LocalDate træningsdato;
+	private LocalTime træningstid;
 
 }
