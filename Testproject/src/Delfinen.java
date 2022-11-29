@@ -23,6 +23,8 @@ public class Delfinen {
 	public static void main() {
 		// TODO - implement Delfinen.main
 		throw new UnsupportedOperationException();
+
+		System.out.println("hej"");
 	}
 
 }
