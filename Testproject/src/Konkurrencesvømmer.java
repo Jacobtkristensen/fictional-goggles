@@ -2,6 +2,7 @@ import java.time.LocalDate;
 
 public class Konkurrencesvømmer extends Medlem {
 	private boolean[] aktivdisciplin=new boolean[4];
+	private Svømmedisciplin[] discipliner=new Svømmedisciplin[4];
 	public Konkurrencesvømmer(String navn, LocalDate bday, boolean gender, String disciplinset){
 		super(navn,bday,gender);
 		this.aktivdisciplin=setAktivDiscipliner(disciplinset);
