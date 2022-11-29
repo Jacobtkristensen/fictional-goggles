@@ -27,10 +27,22 @@ public class Delfinen {
 			Medlem nytmedlem = new Medlem(navn, bday, gender);
 			medlemmer.add(nytmedlem);
 		}
+		String aktivdisciplin="";
+		System.out.println("tast de discipliner du vil stille op i, uden komma i mellem: ");
+		System.out.println("brystsvømnin=b, crawl=c, ryg=r, butterfly=f");
+		aktivdisciplin=aktivdisciplin.concat(sc.next());
+		if(Medlem.getAlder(bday)<18){
+			Medlem nytmedlem=new Juniorsvømmer(String navn, LocalDate bday, boolean gender,String aktivdisciplin);
+			medlemmer.add(nytmedlem);
+		}
+		else{
+			Medlem nytmedlem=Seniorsvømmer(String navn, LocalDate bday, boolean gender,String aktivdisciplin);
+			medlemmer.add(nytmedlem);
+		}
 
 		// tilføj nyt medlem til ArrayList
 
-		throw new UnsupportedOperationException();
+
 	}
 
 	public void hentkontingent() {
