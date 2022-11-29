@@ -2,7 +2,7 @@ import java.util.Date;
 
 public class AktivMedlem extends Medlem {
 
-	private Date svømmetidspunkt;
-	private boolean harTræner;
+	private Date svÃ¸mmetidspunkt;
+	private boolean harTrÃ¦ner;
 
 }

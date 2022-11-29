@@ -2,6 +2,8 @@ public class Delfinen {
 
 	public void opretMedlem() {
 		// TODO - implement Delfinen.opretMedlem
+		// tilføj nyt medlem til ArrayList
+
 		throw new UnsupportedOperationException();
 	}
 
@@ -22,7 +24,9 @@ public class Delfinen {
 
 	public static void main() {
 		// TODO - implement Delfinen.main
-		throw new UnsupportedOperationException();
+		//throw new UnsupportedOperationException();
+
+		System.out.println("hej");
 	}
 
 }

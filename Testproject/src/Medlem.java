@@ -1,15 +1,17 @@
+import java.util.Date;
+
 public abstract class Medlem implements Kontingent {
 
 	private int medlemsnummer;
 	private String navn;
-	private Date fødseldag;
+	private Date fÃ¸dseldag;
 	private boolean gender;
 
 	/**
 	 * 
-	 * @param fødselsdag
+	 * @param fï¿½dselsdag
 	 */
-	public int getAlder(Date fødselsdag) {
+	public int getAlder(Date fÃ¸dselsdag) {
 		// TODO - implement Medlem.getAlder
 		throw new UnsupportedOperationException();
 	}
