@@ -1,10 +1,10 @@
 import java.time.LocalDate;
 
-public abstract class Konkurrencesvømmer extends Medlem {
+public class Konkurrencesvømmer extends Medlem {
 	private boolean[] aktivdisciplin=new boolean[4];
-	public Konkurrencesvømmer(String navn, LocalDate bday, boolean gender){
+	public Konkurrencesvømmer(String navn, LocalDate bday, boolean gender, String disciplinset){
 		super(navn,bday,gender);
-		//this.aktivdisciplin=setAktivDiscipliner(disciplinset);
+		this.aktivdisciplin=setAktivDiscipliner(disciplinset);
 	}
 
 
@@ -24,8 +24,12 @@ public abstract class Konkurrencesvømmer extends Medlem {
 		}
 		return aktivdisciplin;
 	}
-	public abstract void GetResults();
+	public void GetResults() {
+		System.out.println("to be implemented");
+	}
 
-	public abstract void tilføjDisciplin();
 
+	public void tilføjDisciplin() {
+		System.out.println("kommer");
+	}
 }
