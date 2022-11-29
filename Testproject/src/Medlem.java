@@ -1,13 +1,16 @@
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.Period;
 
-public abstract class Medlem implements Kontingent {
+
+public class Medlem implements Kontingent {
 	private static int medlemmer=1;
 	private int medlemsnummer;
 	private String navn;
-	private LocalDateTime fødseldag;
+	private LocalDate fødseldag;
 	private boolean gender;
 
-	public Medlem(String navn, Date fødseldag, boolean gender){
+	public Medlem(String navn, LocalDate fødseldag, boolean gender){
 		medlemsnummer=medlemmer;
 		medlemmer++;
 		this.navn=navn;
@@ -19,9 +22,14 @@ public abstract class Medlem implements Kontingent {
 	 * 
 	 * @param f�dselsdag
 	 */
-	public int getAlder(LocalDateTime fødselsdag) {
+	public int getAlder(LocalDate fødselsdag) {
 		// TODO - implement Medlem.getAlder
-		throw new UnsupportedOperationException();
+
+		LocalDate today = LocalDate.now();
+		LocalDate birthday = LocalDate.of(fødselsdag.getYear(),fødselsdag.getMonth(),fødselsdag.getDayOfMonth());
+		Period period = Period.between(birthday, today);
+		return period.getYears();
 	}
+
 
 }

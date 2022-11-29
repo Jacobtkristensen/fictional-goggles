@@ -1,4 +1,4 @@
-public abstract class Konkurrencesvømmer extends AktivMedlem {
+public abstract class Konkurrencesvømmer extends Medlem {
 
 	public abstract void GetResults();
 
