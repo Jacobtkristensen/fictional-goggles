@@ -9,16 +9,16 @@ public class Konkurrencesvømmer extends Medlem {
 		for (int i=0;i<4;i++){
 			if(aktivdisciplin[i]){
 				if(i==0){    //"brystsvømning=b, crawl=c, ryg=r, butterfly=f"
-					Svømmedisciplin[i]=new Svømmedisciplin("brystsvømning");
+					discipliner[i]=new Svømmedisciplin("brystsvømning");
 				}
 				if(i==1){
-					Svømmedisciplin[i]=new Svømmedisciplin("crawl");
+					discipliner[i]=new Svømmedisciplin("crawl");
 				}
 				if(i==2){
-					Svømmedisciplin[i]=new Svømmedisciplin("ryg");
+					discipliner[i]=new Svømmedisciplin("ryg");
 				}
 				if(i==3){
-					Svømmedisciplin[i]=new Svømmedisciplin("butterfly");
+					discipliner[i]=new Svømmedisciplin("butterfly");
 				}
 			}
 		}
