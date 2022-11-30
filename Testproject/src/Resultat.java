@@ -1,9 +1,38 @@
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 public class Resultat {
 
-	private Træningsresultat træning;
-	private StævneResultat stævne;
+	private LocalDate træningsdato=LocalDate.now();
+	private LocalTime træningstid= LocalTime.now();
+	private String stævnenavn="ikke deltaget i stævne endnu";
+	private int placering=-99;
+	private LocalTime stævnetid=LocalTime.now();
 
-	public Resultat(){
-		this.træning=
+	private LocalTime bedsteTid=LocalTime.now();
+
+	public Resultat(){}
+
+	public Resultat(String træningsdato, String træningstid){
+		this.træningsdato=LocalDate.parse(træningsdato);
+		this.træningstid=LocalTime.parse(træningstid);
+		if(træningstid<stævnetid){
+			bedsteTid=træningstid;
+		}
+		else{
+			bedsteTid=stævnetid;
+		}
+	}
+	public void setStævneresultater(String stævnenavn, int placering, String stævnetid){
+		this.stævnenavn=stævnenavn;
+		this.placering=placering;
+		this.stævnetid=LocalTime.parse(stævnetid);
+	}
+	public void setTræningsresultater(String træningsdato, String træningstid){
+		this.træningsdato=LocalDate.parse(træningsdato);
+		this.træningstid=LocalTime.parse(træningstid);
+	}
+	public LocalTime getResults(){
+		return bedsteTid;
 	}
 }
