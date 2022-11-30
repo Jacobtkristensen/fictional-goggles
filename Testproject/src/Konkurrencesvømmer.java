@@ -6,6 +6,13 @@ public class Konkurrencesvømmer extends Medlem {
 	public Konkurrencesvømmer(String navn, LocalDate bday, boolean gender, String disciplinset){
 		super(navn,bday,gender);
 		this.aktivdisciplin=setAktivDiscipliner(disciplinset);
+		for (int i=0;i<4;i++){
+			if(aktivdisciplin[i]){
+				if(i==0){    //"brystsvømning=b, crawl=c, ryg=r, butterfly=f"
+					Svømmedisciplin[i]=new Svømmedisciplin("brystsvømning");
+				}
+			}
+		}
 	}
 
 

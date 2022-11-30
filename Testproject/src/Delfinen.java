@@ -20,10 +20,6 @@ public class Delfinen {
 		LocalDate bday = LocalDate.parse(date);
 
 
-
-
-
-
 		System.out.println(" indtast køn: M/K: ");
 		boolean gender=false;
 		if (sc.next().equalsIgnoreCase("M")){
