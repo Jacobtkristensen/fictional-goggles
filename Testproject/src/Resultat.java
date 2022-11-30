@@ -1,8 +1,9 @@
 public class Resultat {
 
-	private Træningsreultat træning;
+	private Træningsresultat træning;
 	private StævneResultat stævne;
 
-
-
+	public Resultat(){
+		this.træning=
+	}
 }
