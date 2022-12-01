@@ -72,6 +72,7 @@ public class Medlem {
 		String s=medlemsnummer+"| "+navn+"| "+Medlem.getAlder(this.getFoedselsdag())+"| "+køn;
 		return s;
 	}
+
 	public static ArrayList<Medlem> opretMedlem(ArrayList<Medlem> medlemmer) {
 		// TODO - implement Delfinen.opretMedlem
 		Scanner sc=new Scanner(System.in);

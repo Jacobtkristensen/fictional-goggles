@@ -2,6 +2,14 @@ import java.util.Scanner;
 
 public class Svømmedisciplin {
 
+	public String getDisciplinNavn() {
+		return disciplinNavn;
+	}
+
+	public Resultat getResultater() {
+		return resultater;
+	}
+
 	private String disciplinNavn;
 	private Resultat resultater;
 
@@ -9,7 +17,9 @@ public class Svømmedisciplin {
 		this.disciplinNavn=disciplinNavn;
 		this.resultater=new Resultat();
 	}
-
+	public String toString(){
+		return "["+ this.getDisciplinNavn()+", "+getResultater().getResult()+"]";
+	}
 	public void opdaterResutater(int trænerinput) { //del af trænerens muligheder
 		// TODO - implement Svømmedisciplin.opdaterResutater
 		Scanner sc= new Scanner(System.in);
@@ -34,7 +44,7 @@ public class Svømmedisciplin {
 				this.resultater.setStævneresultater(stævnenavn,placering,tid);
 				break;
 		}
-		throw new UnsupportedOperationException();
+
 	}
 
 }
