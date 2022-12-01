@@ -12,13 +12,15 @@ public class Medlem {
 	private boolean gender;
 
 	private double kontingent = 0;
+	private boolean harBetalt;
 
-	public Medlem(String navn, LocalDate foedselsdag, boolean gender){
+	public Medlem(String navn, LocalDate foedselsdag, boolean gender, boolean harBetalt){
 		medlemsnummer=medlemmer;
 		medlemmer++;
 		this.navn=navn;
 		this.foedselsdag = foedselsdag;
 		this.gender=gender;
+		this.harBetalt=harBetalt;
 	}
 
 	/**
@@ -36,7 +38,9 @@ public class Medlem {
 	public LocalDate getFoedselsdag(){
 		return foedselsdag;
 	}
-
+	public boolean getHarBetalt() {
+		return harBetalt;
+	}
 
 	public double beregnKontingent() {
 		double rabat = 0.75;
@@ -70,15 +74,20 @@ public class Medlem {
 		if (sc.next().equalsIgnoreCase("M")){
 			gender=true;
 		}
+		System.out.println(" Har medlem betalt? ");
+		boolean harBetalt = false;
+		if (sc.next().equalsIgnoreCase("J")){
+			harBetalt = true;
+		}
 		System.out.println("ønsker du at være aktivt medlem? [J/N]");
 		if (sc.next().equalsIgnoreCase("N")){
-			Medlem nytmedlem=new PassivMedlem(navn,bday,gender);
+			Medlem nytmedlem=new PassivMedlem(navn,bday,gender, harBetalt);
 			medlemmer.add(nytmedlem);
 			return medlemmer;
 		}
 		System.out.println("ønsker du at være konkurrencesvømmer? [J/N]");
 		if (sc.next().equalsIgnoreCase("n")) {
-			Medlem nytmedlem = new Medlem(navn, bday, gender);
+			Medlem nytmedlem = new Medlem(navn, bday, gender, harBetalt);
 			medlemmer.add(nytmedlem);
 			return medlemmer;
 		}
@@ -87,7 +96,7 @@ public class Medlem {
 		System.out.println("brystsvømnin=b, crawl=c, ryg=r, butterfly=f");
 		aktivdisciplin=aktivdisciplin.concat(sc.next());
 
-		Medlem nytmedlem=new Konkurrencesvømmer(navn, bday, gender, aktivdisciplin);
+		Medlem nytmedlem=new Konkurrencesvømmer(navn, bday, gender, harBetalt, aktivdisciplin);
 		medlemmer.add(nytmedlem);
 		return medlemmer;
 
