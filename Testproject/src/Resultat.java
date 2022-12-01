@@ -16,8 +16,8 @@ public class Resultat {
 	public Resultat(String træningsdato, String træningstid){
 		this.træningsdato=LocalDate.parse(træningsdato);
 		this.træningstid=LocalTime.parse(træningstid);
-		if(træningstid<stævnetid){
-			bedsteTid=træningstid;
+		if(this.træningstid<this.stævnetid){
+			this.bedsteTid=this.træningstid;
 		}
 		else{
 			bedsteTid=stævnetid;
@@ -27,21 +27,21 @@ public class Resultat {
 		this.stævnenavn=stævnenavn;
 		this.placering=placering;
 		this.stævnetid=LocalTime.parse(stævnetid);
-		if(træningstid<stævnetid){
-			bedsteTid=træningstid;
+		if(this.træningstid<this.stævnetid){
+			this.bedsteTid=this.træningstid;
 		}
 		else{
-			bedsteTid=stævnetid;
+			this.bedsteTid=this.stævnetid;
 		}
 	}
 	public void setTræningsresultater(String træningsdato, String træningstid){
 		this.træningsdato=LocalDate.parse(træningsdato);
 		this.træningstid=LocalTime.parse(træningstid);
-		if(træningstid<stævnetid){
-			bedsteTid=træningstid;
+		if(this.træningstid<this.stævnetid){
+			this.bedsteTid=this.træningstid;
 		}
 		else{
-			bedsteTid=stævnetid;
+			this.bedsteTid=this.stævnetid;
 		}
 	}
 	public LocalTime getResult(){
