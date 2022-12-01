@@ -70,10 +70,30 @@ public class Delfinen {
 
 	public static void main(String[] args) {
 		// TODO - implement Delfinen.main
-		ArrayList<Medlem> medlemmer=new ArrayList<>();
+		ArrayList<Medlem> medlemmer = new ArrayList<>();
 		Medlem.opretMedlem(medlemmer);
 
-		System.out.println("hej");
-	}
+		System.out.println("Hvad ønsker du at gøre? ");
+		System.out.println("[1] Stamoplysninger.");
+		System.out.println("[2] Kontingentoplysninger.");
+		System.out.println("[3] Svømmeresultater.");
+		System.out.println("[4] Indlæs eller skriv til Medlemsfil.");
 
+		try { //Hovedmenu.
+			Scanner scn = new Scanner(System.in);
+
+			switch (scn.next()) {
+				case 1: // kald stamoplysningermenu.
+				case 2: // Kontingentmenu.
+				case 3: // Svømmemenu
+				case 4: // Medlemsfil.
+			}
+		} catch (Exception e) {
+			System.out.println("Forkert input, prøv igen");
+		}
+
+
+		System.out.println("hej");
+
+	}
 }
