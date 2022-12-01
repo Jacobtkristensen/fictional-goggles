@@ -1,5 +1,6 @@
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 
 public class Konkurrencesvømmer extends Medlem {
@@ -25,8 +26,9 @@ public class Konkurrencesvømmer extends Medlem {
 				}
 			}
 		}
+		DateTimeFormatter tidsformat = DateTimeFormatter.ofPattern("HH:mm:ss,SS");
 		String tider="23:59:59,00";
-		LocalTime initialtider=LocalTime.parse(tider);
+		LocalTime initialtider=LocalTime.parse(tider,tidsformat);
 		Arrays.fill(resultater,initialtider);
 	}
 
