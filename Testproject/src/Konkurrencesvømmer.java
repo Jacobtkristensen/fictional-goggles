@@ -6,8 +6,8 @@ public class Konkurrencesvømmer extends Medlem {
 	private boolean[] aktivdisciplin=new boolean[4];
 	private Svømmedisciplin[] discipliner=new Svømmedisciplin[4];
 	private LocalTime[] resultater=new LocalTime[4];
-	public Konkurrencesvømmer(String navn, LocalDate bday, boolean gender, String disciplinset){
-		super(navn,bday,gender);
+	public Konkurrencesvømmer(String navn, LocalDate bday, boolean gender, boolean harBetalt, String disciplinset){
+		super(navn,bday,gender, harBetalt);
 		this.aktivdisciplin=setAktivDiscipliner(disciplinset);
 		for (int i=0;i<4;i++){
 			if(aktivdisciplin[i]){
