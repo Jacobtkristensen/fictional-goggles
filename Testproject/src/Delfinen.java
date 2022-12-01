@@ -7,7 +7,7 @@ public class Delfinen {
 
 
 
-	public static ArrayList<Medlem> opretMedlem(ArrayList<Medlem> medlemmer) {
+/*	public static ArrayList<Medlem> opretMedlem(ArrayList<Medlem> medlemmer) {
 		// TODO - implement Delfinen.opretMedlem
 		Scanner sc=new Scanner(System.in);
 		System.out.println("indtast medlemsnavn: ");
@@ -51,7 +51,7 @@ public class Delfinen {
 		// tilføj nyt medlem til ArrayList
 
 
-	}
+	}*/
 
 	public void hentkontingent() {
 		// TODO - implement Delfinen.hentkontingent
@@ -71,7 +71,7 @@ public class Delfinen {
 	public static void main(String[] args) {
 		// TODO - implement Delfinen.main
 		ArrayList<Medlem> medlemmer=new ArrayList<>();
-		opretMedlem(medlemmer);
+		Medlem.opretMedlem(medlemmer);
 
 		System.out.println("hej");
 	}

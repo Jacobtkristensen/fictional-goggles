@@ -44,7 +44,7 @@ public class Resultat {
 			bedsteTid=stævnetid;
 		}
 	}
-	public LocalTime getResults(){
+	public LocalTime getResult(){
 		return bedsteTid;
 	}
 }
