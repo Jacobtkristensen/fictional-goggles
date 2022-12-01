@@ -82,7 +82,7 @@ public class Delfinen {
 		try { //Hovedmenu.
 			Scanner scn = new Scanner(System.in);
 
-			switch (scn.next()) {
+			switch (scn.nextInt()) {
 				case 1: // kald stamoplysningermenu.
 				case 2: // Kontingentmenu.
 				case 3: // Svømmemenu
