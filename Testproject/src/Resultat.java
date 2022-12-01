@@ -1,17 +1,24 @@
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 public class Resultat {
 
 	private LocalDate træningsdato=LocalDate.now();
-	private LocalTime træningstid= LocalTime.now();
+	private LocalTime træningstid;
 	private String stævnenavn="ikke deltaget i stævne endnu";
 	private int placering=-99;
-	private LocalTime stævnetid=LocalTime.now();
+	private LocalTime stævnetid;
 
-	private LocalTime bedsteTid=LocalTime.now();
+	private LocalTime bedsteTid;
 
-	public Resultat(){}
+	public Resultat(){
+		DateTimeFormatter tidsformat = DateTimeFormatter.ofPattern("HH:mm:ss,SS");
+		String tider="23:59:59,00";
+		LocalTime initialtider=LocalTime.parse(tider,tidsformat);
+		this.træningstid=initialtider;
+		this.stævnetid=initialtider;
+	}
 
 	public Resultat(String træningsdato, String træningstid){
 		this.træningsdato=LocalDate.parse(træningsdato);

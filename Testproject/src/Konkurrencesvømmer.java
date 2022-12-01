@@ -10,6 +10,9 @@ public class Konkurrencesvømmer extends Medlem {
 	public Konkurrencesvømmer(String navn, LocalDate bday, boolean gender, boolean harBetalt, String disciplinset){
 		super(navn,bday,gender, harBetalt);
 		this.aktivdisciplin=setAktivDiscipliner(disciplinset);
+		DateTimeFormatter tidsformat = DateTimeFormatter.ofPattern("HH:mm:ss,SS");
+		String tider="23:59:59,00";
+		LocalTime initialtider=LocalTime.parse(tider,tidsformat);
 		for (int i=0;i<4;i++){
 			if(aktivdisciplin[i]){
 				if(i==0){    //"brystsvømning=b, crawl=c, ryg=r, butterfly=f"
