@@ -1,3 +1,4 @@
+import java.time.LocalTime;
 import java.util.Scanner;
 
 public class Svømmedisciplin {
@@ -12,10 +13,12 @@ public class Svømmedisciplin {
 
 	private String disciplinNavn;
 	private Resultat resultater;
+	private LocalTime currentbest;
 
 	public Svømmedisciplin(String disciplinNavn){
 		this.disciplinNavn=disciplinNavn;
 		this.resultater=new Resultat();
+		this.currentbest=this.resultater.getResult();
 	}
 	public String toString(){
 		return "["+ this.getDisciplinNavn()+", "+getResultater().getResult()+"]";
