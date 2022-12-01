@@ -81,7 +81,8 @@ public class Menu {
 
     }
 
-    public static void OpdaterResultater()
+    public static void OpdaterResultater() {
+
         System.out.println("Hvad ønsker du at gøre? ");
         System.out.println("[1] Opdater resultater.");
         System.out.println("[2] Se top 5 svømmere.");
@@ -97,8 +98,9 @@ public class Menu {
             case 4: //Se konSvøm
         }
     } catch (Exception e) {
-        System.out.println("Forkert input, prøv igen");
-    }
+            System.out.println("Forkert input, prøv igen");
+        }
+        }
 
     public static void IndlæsSkrivMedlemsfil() {
         System.out.println("Hvad ønsker du at gøre? ");
