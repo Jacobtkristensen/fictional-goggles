@@ -9,6 +9,11 @@ public class Medlem {
 	private int medlemsnummer;
 	private String navn;
 	private LocalDate foedselsdag;
+
+	public boolean isGender() {
+		return gender;
+	}
+
 	private boolean gender;
 
 	private double kontingent = 0;
@@ -51,6 +56,16 @@ public class Medlem {
 		else {
 			return kontingent;
 		}
+	}
+	public String toString(){
+		String køn="";
+		if(this.isGender()){
+			 køn="mand";
+		}
+		else {
+			køn="kvinde";
+		}
+		String s=medlemsnummer+"| "+navn+"| "+Medlem.getAlder(this.getFoedselsdag())+"| "+køn;
 	}
 	public static ArrayList<Medlem> opretMedlem(ArrayList<Medlem> medlemmer) {
 		// TODO - implement Delfinen.opretMedlem
