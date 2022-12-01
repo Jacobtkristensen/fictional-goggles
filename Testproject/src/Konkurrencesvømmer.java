@@ -30,7 +30,10 @@ public class Konkurrencesvømmer extends Medlem {
 		Arrays.fill(resultater,initialtider);
 	}
 
-
+	public String toString(){
+		String s=Arrays.toString(discipliner);
+		return super.toString()+s;
+	}
 
 	public boolean[] setAktivDiscipliner(String disciplinset) {
 		if(disciplinset.contains("b")){
