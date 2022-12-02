@@ -21,7 +21,7 @@ public class Svømmedisciplin {
 		this.currentbest=this.resultater.getResult();
 	}
 	public String toString(){
-		return "["+ this.getDisciplinNavn()+", "+getResultater().getResult()+"]";
+		return "["+ this.getDisciplinNavn()+", "+getResultater().toString()+"]";
 	}
 	public void opdaterResutater(int trænerinput) { //del af trænerens muligheder
 		// TODO - implement Svømmedisciplin.opdaterResutater
