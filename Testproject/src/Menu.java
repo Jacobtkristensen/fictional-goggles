@@ -38,7 +38,7 @@ public class Menu {
                 case 4: // se medlemsliste
             }
         } catch (Exception e) {
-            System.out.println("Forkert input, prøv igen");
+            System.out.println("Forkert indtastning, prøv igen");
         }
     }
     public static void Kontingentmenu() {
@@ -55,7 +55,7 @@ public class Menu {
 
             }
         } catch (Exception e) {
-            System.out.println("Forkert input, prøv igen");
+            System.out.println("Forkert indtastning, prøv igen");
         }
 
     }
@@ -76,7 +76,7 @@ public class Menu {
                 case 4: //Se konSvøm
             }
         } catch (Exception e) {
-            System.out.println("Forkert input, prøv igen");
+            System.out.println("Forkert indtastning, prøv igen");
         }
 
     }
@@ -98,7 +98,7 @@ public class Menu {
             case 4: //Se konSvøm
         }
     } catch (Exception e) {
-            System.out.println("Forkert input, prøv igen");
+            System.out.println("Forkert indtastning, prøv igen");
         }
         }
 
@@ -116,7 +116,7 @@ public class Menu {
 
             }
         } catch (Exception e) {
-            System.out.println("Forkert input, prøv igen");
+            System.out.println("Forkert indtastning, prøv igen");
         }
 
     }
