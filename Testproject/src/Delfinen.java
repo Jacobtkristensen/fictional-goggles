@@ -48,7 +48,7 @@ public class Delfinen {
 				case 4: Menu.IndlæsSkrivMedlemsfil();
 			}
 		} catch (Exception e) {
-			System.out.println("Forkert input, prøv igen");
+			System.out.println("Forkert indtastning, prøv igen");
 		}
 
 */

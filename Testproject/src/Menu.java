@@ -38,7 +38,7 @@ public class Menu {
                 case 4: // se medlemsliste
             }
         } catch (Exception e) {
-            System.out.println("Forkert input, prøv igen");
+            System.out.println("Forkert indtastning, prøv igen");
         }
     }
     public static void Kontingentmenu() {
@@ -55,7 +55,7 @@ public class Menu {
 
             }
         } catch (Exception e) {
-            System.out.println("Forkert input, prøv igen");
+            System.out.println("Forkert indtastning, prøv igen");
         }
 
     }
@@ -76,30 +76,31 @@ public class Menu {
                 case 4: //Se konSvøm
             }
         } catch (Exception e) {
-            System.out.println("Forkert input, prøv igen");
+            System.out.println("Forkert indtastning, prøv igen");
         }
 
     }
 
     public static void OpdaterResultater() {
+
         System.out.println("Hvad ønsker du at gøre? ");
         System.out.println("[1] Opdater resultater.");
         System.out.println("[2] Se top 5 svømmere.");
         System.out.println("[3] Rediger discipliner.");
         System.out.println("[4] Se konkurrencesvømmere.");
         try {
-            Scanner scn = new Scanner(System.in);
+        Scanner scn = new Scanner(System.in);
 
-            switch (scn.nextInt()) {
-                case 1: //opdater res.
-                case 2: //Top 5.
-                case 3: //red disc.
-                case 4: //Se konSvøm
-            }
-        } catch (Exception e) {
-            System.out.println("Forkert input, prøv igen");
+        switch (scn.nextInt()) {
+            case 1: //opdater res.
+            case 2: //Top 5.
+            case 3: //red disc.
+            case 4: //Se konSvøm
         }
-    }
+    } catch (Exception e) {
+            System.out.println("Forkert indtastning, prøv igen");
+        }
+        }
 
     public static void IndlæsSkrivMedlemsfil() {
         System.out.println("Hvad ønsker du at gøre? ");
@@ -115,7 +116,7 @@ public class Menu {
 
             }
         } catch (Exception e) {
-            System.out.println("Forkert input, prøv igen");
+            System.out.println("Forkert indtastning, prøv igen");
         }
 
     }
