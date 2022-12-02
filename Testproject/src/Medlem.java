@@ -69,7 +69,7 @@ public class Medlem {
 		else {
 			køn="kvinde";
 		}
-		String s=medlemsnummer+"| "+navn+"| "+Medlem.getAlder(this.getFoedselsdag())+"| "+køn;
+		String s=medlemsnummer+" | "+navn+" | "+Medlem.getAlder(this.getFoedselsdag())+ " | " +køn+ " | " +harBetalt;
 		return s;
 	}
 
@@ -77,7 +77,7 @@ public class Medlem {
 		// TODO - implement Delfinen.opretMedlem
 		Scanner sc=new Scanner(System.in);
 		System.out.println("indtast medlemsnavn: ");
-		String navn= sc.next();
+		String navn= sc.nextLine();
 		System.out.println(" indtast fødselsdag som YYYY-MM-DD: ");
 		//DateTimeFormatter format = DateTimeFormatter.ofPattern("YYYY-MM-DD");
 		String date =sc.next();
