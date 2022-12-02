@@ -15,7 +15,7 @@ public class Resultat {
 
 	public Resultat(){
 
-		String tider="23:59:59.000";
+		String tider="23:59:59.001";
 		LocalTime initialtider=LocalTime.parse(tider,tidsformat);
 		this.træningstid=initialtider;
 		this.stævnetid=initialtider;
