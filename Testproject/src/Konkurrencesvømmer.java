@@ -5,6 +5,11 @@ import java.util.Arrays;
 
 public class Konkurrencesvømmer extends Medlem {
 	private boolean[] aktivdisciplin=new boolean[4];
+
+	public Svømmedisciplin[] getDiscipliner() {
+		return discipliner;
+	}
+
 	private Svømmedisciplin[] discipliner=new Svømmedisciplin[4];
 	private LocalTime[] resultater=new LocalTime[4];
 	DateTimeFormatter tidsformat = DateTimeFormatter.ofPattern("HH:mm:ss,SS");

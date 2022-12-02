@@ -42,6 +42,9 @@ public class Delfinen {
 		for(Medlem m:medlemmer){
 			System.out.println(m);
 		}
+		Konkurrencesvømmer m1=(Konkurrencesvømmer) medlemmer.get(0);
+		m1.getDiscipliner()[0].opdaterResutater(1);
+		System.out.println(m1);
 /*
 		System.out.println("Hvad ønsker du at gøre? ");
 		System.out.println("[1] Stamoplysninger.");
