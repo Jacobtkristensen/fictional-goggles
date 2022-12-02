@@ -69,7 +69,7 @@ public class Medlem {
 		else {
 			køn="kvinde";
 		}
-		String s=medlemsnummer+"| "+navn+"| "+Medlem.getAlder(this.getFoedselsdag())+"| "+køn;
+		String s=medlemsnummer+" | "+navn+" | "+Medlem.getAlder(this.getFoedselsdag())+ " | " +køn+ " | " +harBetalt;
 		return s;
 	}
 
