@@ -27,7 +27,18 @@ public class Delfinen {
 	public static void main(String[] args) {
 		// TODO - implement Delfinen.main
 		ArrayList<Medlem> medlemmer = new ArrayList<>();
-		Medlem.opretMedlem(medlemmer);
+		Scanner sc=new Scanner(System.in);
+		System.out.println("vil du oprette et nyt medlem? ");
+		String userinput=sc.next();
+		if(userinput.equalsIgnoreCase("j")){
+			do{
+				Medlem.opretMedlem(medlemmer);
+				System.out.println("vil du oprette endnu et medlem? J/N: ");
+				userinput= sc.next();
+			}while (!userinput.equalsIgnoreCase("n"));
+
+		}
+
 		for(Medlem m:medlemmer){
 			System.out.println(m);
 		}

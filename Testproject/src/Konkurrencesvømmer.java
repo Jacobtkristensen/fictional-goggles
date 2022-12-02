@@ -31,8 +31,8 @@ public class Konkurrencesvømmer extends Medlem {
 			}
 		}
 
-		tider="23:59:59,00";
-		initialtider=LocalTime.parse(tider,tidsformat);
+		 tider="23:59:59,00";
+		 initialtider=LocalTime.parse(tider,tidsformat);
 		Arrays.fill(resultater,initialtider);
 	}
 

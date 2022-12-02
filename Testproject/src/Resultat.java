@@ -11,13 +11,15 @@ public class Resultat {
 	private LocalTime stævnetid;
 
 	private LocalTime bedsteTid;
+	DateTimeFormatter tidsformat = DateTimeFormatter.ofPattern("HH:mm:ss.SSS");
 
 	public Resultat(){
-		DateTimeFormatter tidsformat = DateTimeFormatter.ofPattern("HH:mm:ss,SS");
-		String tider="23:59:59,00";
+
+		String tider="23:59:59.000";
 		LocalTime initialtider=LocalTime.parse(tider,tidsformat);
 		this.træningstid=initialtider;
 		this.stævnetid=initialtider;
+		this.bedsteTid=initialtider;
 	}
 
 	public Resultat(String træningsdato, String træningstid){
@@ -53,5 +55,9 @@ public class Resultat {
 	}
 	public LocalTime getResult(){
 		return bedsteTid;
+	}
+	public String toString(){
+		return this.bedsteTid.format(tidsformat);
+
 	}
 }
