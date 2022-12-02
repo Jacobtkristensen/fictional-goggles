@@ -91,7 +91,7 @@ public class Medlem {
 		if (sc.next().equalsIgnoreCase("M")){
 			gender=true;
 		}
-		System.out.println(" Har medlem betalt? ");
+		System.out.println(" Har medlem betalt? [J/N]");
 		boolean harBetalt = false;
 		if (sc.next().equalsIgnoreCase("J")){
 			harBetalt = true;
