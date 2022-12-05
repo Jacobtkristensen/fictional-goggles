@@ -1,13 +1,13 @@
-import org.jetbrains.annotations.NotNull;
 
-import java.io.Serializable;
+
+import java.io.*;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Medlem implements Serializable {
-	private static int medlemmer = 1;
+	private static int medlemmer = 0;
 	private int medlemsnummer;
 	private String navn;
 	private LocalDate foedselsdag;
@@ -18,7 +18,7 @@ public class Medlem implements Serializable {
 
 	//Constructors. no-arg constructor must be available
 	public Medlem() {
-		this.medlemsnummer = medlemmer;
+		this.medlemsnummer = medlemmer + 1;
 		medlemmer++;
 		this.navn = "Fornavn";
 		this.foedselsdag = LocalDate.now();
@@ -29,7 +29,7 @@ public class Medlem implements Serializable {
 	}
 
 	public Medlem(String navn, LocalDate foedselsdag, boolean gender, boolean harBetalt) {
-		medlemsnummer = medlemmer;
+		medlemsnummer = medlemmer + 1;
 		medlemmer++;
 		this.navn = navn;
 		this.foedselsdag = foedselsdag;
@@ -88,6 +88,11 @@ public class Medlem implements Serializable {
 	}
 
 	public String toString() {
+		String s = medlemmer + " " + medlemsnummer + " " + navn + " " + foedselsdag + " " + gender + " " + type + " " + kontingent + " " + harBetalt;
+		return s;
+	}
+
+	public String printTilKonsol() {
 		String køn = "";
 		if (this.isGender()) {
 			køn = "mand";
@@ -124,7 +129,7 @@ public class Medlem implements Serializable {
 		if (sc.next().equalsIgnoreCase("N")) {
 			Medlem nytmedlem = new PassivMedlem(navn, bday, gender, harBetalt);
 			nytmedlem.setType("PassivMedlem");
-			//Delfinen.skrivMedlemmerTilFil(nytmedlem);
+			Medlem.skrivMedlemmerTilFil(nytmedlem);
 			medlemmer.add(nytmedlem);
 			return medlemmer;
 		}
@@ -132,7 +137,7 @@ public class Medlem implements Serializable {
 		if (sc.next().equalsIgnoreCase("n")) {
 			Medlem nytmedlem = new Medlem(navn, bday, gender, harBetalt);
 			nytmedlem.setType("Medlem");
-			//Delfinen.skrivMedlemmerTilFil(nytmedlem);
+			Medlem.skrivMedlemmerTilFil(nytmedlem);
 			medlemmer.add(nytmedlem);
 			return medlemmer;
 		}
@@ -143,7 +148,7 @@ public class Medlem implements Serializable {
 
 		Medlem nytmedlem = new Konkurrencesvømmer(navn, bday, gender, harBetalt, aktivdisciplin);
 		nytmedlem.setType("Konkurrencesvømmer");
-		//Delfinen.skrivMedlemmerTilFil(nytmedlem);
+		Medlem.skrivMedlemmerTilFil(nytmedlem);
 		medlemmer.add(nytmedlem);
 		return medlemmer;
 
@@ -155,6 +160,13 @@ public class Medlem implements Serializable {
 
 	public int getMedlemsnummer() {
 		return medlemsnummer;
+	}
+
+	public static void skrivMedlemmerTilFil(Medlem m) throws FileNotFoundException {
+		File medlemsliste = new File("medlemsliste.txt");
+		PrintStream medlemprint = new PrintStream(new FileOutputStream(medlemsliste, true));
+		medlemprint.println(m);
+
 	}
 }
 
