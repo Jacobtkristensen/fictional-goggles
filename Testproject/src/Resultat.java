@@ -1,8 +1,9 @@
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
-public class Resultat {
+public class Resultat implements Serializable {
 
 	private LocalDate træningsdato=LocalDate.now();
 	private LocalTime træningstid;
@@ -11,7 +12,7 @@ public class Resultat {
 	private LocalTime stævnetid;
 
 	private LocalTime bedsteTid;
-	DateTimeFormatter tidsformat = DateTimeFormatter.ofPattern("HH:mm:ss.SSS");
+	transient DateTimeFormatter tidsformat = DateTimeFormatter.ofPattern("HH:mm:ss.SSS");
 
 	public Resultat(){
 

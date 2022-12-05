@@ -1,23 +1,30 @@
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 
-public class Konkurrencesvømmer extends Medlem {
+public class Konkurrencesvømmer extends Medlem implements Serializable {
 	private boolean[] aktivdisciplin=new boolean[4];
-
-	public Svømmedisciplin[] getDiscipliner() {
-		return discipliner;
-	}
 
 	private Svømmedisciplin[] discipliner=new Svømmedisciplin[4];
 	private LocalTime[] resultater=new LocalTime[4];
-	DateTimeFormatter tidsformat = DateTimeFormatter.ofPattern("HH:mm:ss,SS");
+	transient DateTimeFormatter tidsformat = DateTimeFormatter.ofPattern("HH:mm:ss.SSS");
+	//constructors. in order to be able to serialize/deserialize a no-argument constructor must be available
+	public Konkurrencesvømmer(){
+		super();
+		for(int i=0;i<4;i++){
+			this.aktivdisciplin[i]=false;
+			this.discipliner[i]=new Svømmedisciplin();
+			this.resultater[i]=LocalTime.parse("23:59:59.000",tidsformat);
+		}
+
+	}
 	public Konkurrencesvømmer(String navn, LocalDate bday, boolean gender, boolean harBetalt, String disciplinset){
 		super(navn,bday,gender, harBetalt);
 		this.aktivdisciplin=setAktivDiscipliner(disciplinset);
-		DateTimeFormatter tidsformat = DateTimeFormatter.ofPattern("HH:mm:ss,SS");
-		String tider="23:59:59,00";
+		 DateTimeFormatter tidsformat = DateTimeFormatter.ofPattern("HH:mm:ss.SSS");
+		String tider="23:59:59.000";
 		LocalTime initialtider=LocalTime.parse(tider,tidsformat);
 		for (int i=0;i<4;i++){
 			if(aktivdisciplin[i]){
@@ -36,7 +43,7 @@ public class Konkurrencesvømmer extends Medlem {
 			}
 		}
 
-		 tider="23:59:59,00";
+		 tider="23:59:59.000";
 		 initialtider=LocalTime.parse(tider,tidsformat);
 		Arrays.fill(resultater,initialtider);
 	}
@@ -68,7 +75,7 @@ public class Konkurrencesvømmer extends Medlem {
 				resultater[i]= discipliner[i].getResultater().getResult();
 			}
 			else{
-				resultater[i]=LocalTime.parse("23:59:59,00",tidsformat);
+				resultater[i]=LocalTime.parse("23:59:59.000",tidsformat);
 			}
 		}
 	}
@@ -76,5 +83,8 @@ public class Konkurrencesvømmer extends Medlem {
 
 	public void tilføjDisciplin() {
 		System.out.println("kommer");
+	}
+	public Svømmedisciplin[] getDiscipliner() {
+		return discipliner;
 	}
 }
