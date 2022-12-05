@@ -43,16 +43,20 @@ public class Konkurrencesvømmer extends Medlem implements Serializable {
 			}
 		}
 
-		 tider="23:59:59.000";
+		 tider="23:59:59.002";
 		 initialtider=LocalTime.parse(tider,tidsformat);
 		Arrays.fill(resultater,initialtider);
 	}
 
-	public String toString(){
+	public String printTilKonsol(){
 		String s=Arrays.toString(discipliner);
-		return super.toString()+s;
+		return super.printTilKonsol()+s;
 	}
 
+	public String toString(){
+		String s=super.toString()+" "+Arrays.toString(aktivdisciplin)+" "+Arrays.toString(discipliner)+" "+Arrays.toString(resultater);
+		return s;
+	}
 	public boolean[] setAktivDiscipliner(String disciplinset) {
 		if(disciplinset.contains("b")){
 			aktivdisciplin[0]=true;
