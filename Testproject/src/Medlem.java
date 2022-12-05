@@ -1,48 +1,75 @@
+import org.jetbrains.annotations.NotNull;
+
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-
-public class Medlem {
-	private static int medlemmer=1;
+public class Medlem implements Serializable {
+	private static int medlemmer = 1;
 	private int medlemsnummer;
 	private String navn;
 	private LocalDate foedselsdag;
+	private boolean gender;
+	private String type = "";
+	private double kontingent = 0;
+	private boolean harBetalt;
+
+	//Constructors. no-arg constructor must be available
+	public Medlem() {
+		this.medlemsnummer = medlemmer;
+		medlemmer++;
+		this.navn = "Fornavn";
+		this.foedselsdag = LocalDate.now();
+		this.gender = false;
+		this.harBetalt = false;
+		this.type = "medlem";
+		this.kontingent = this.beregnKontingent();
+	}
+
+	public Medlem(String navn, LocalDate foedselsdag, boolean gender, boolean harBetalt) {
+		medlemsnummer = medlemmer;
+		medlemmer++;
+		this.navn = navn;
+		this.foedselsdag = foedselsdag;
+		this.gender = gender;
+		this.harBetalt = harBetalt;
+		this.kontingent = this.beregnKontingent();
+	}
 
 	public boolean isGender() {
 		return gender;
 	}
 
-	private boolean gender;
+	public String getType() {
+		return type;
+	}
 
-	private double kontingent = 0;
-	private boolean harBetalt;
+	public static int getMedlemmer() {
+		return medlemmer;
+	}
 
-	public Medlem(String navn, LocalDate foedselsdag, boolean gender, boolean harBetalt){
-		medlemsnummer=medlemmer;
-		medlemmer++;
-		this.navn=navn;
-		this.foedselsdag = foedselsdag;
-		this.gender=gender;
-		this.harBetalt=harBetalt;
+	public void setType(String type) {
+		this.type = type;
 	}
 
 	/**
-	 * 
 	 * @param foedselsdag
 	 */
 	public static int getAlder(LocalDate foedselsdag) {
 		// TODO - implement Medlem.getAlder
 
 		LocalDate today = LocalDate.now();
-		LocalDate birthday = LocalDate.of(foedselsdag.getYear(),foedselsdag.getMonth(),foedselsdag.getDayOfMonth());
+		LocalDate birthday = LocalDate.of(foedselsdag.getYear(), foedselsdag.getMonth(), foedselsdag.getDayOfMonth());
 		Period period = Period.between(birthday, today);
 		return period.getYears();
 	}
-	public LocalDate getFoedselsdag(){
+
+	public LocalDate getFoedselsdag() {
 		return foedselsdag;
 	}
+
 	public boolean getHarBetalt() {
 		return harBetalt;
 	}
@@ -53,74 +80,81 @@ public class Medlem {
 		double kontingentUng = 1000;
 		if (getAlder(getFoedselsdag()) > 60) {
 			return rabat * kontingent;
-		}
-		else if (getAlder(getFoedselsdag()) < 18) {
+		} else if (getAlder(getFoedselsdag()) < 18) {
 			return kontingentUng;
-		}
-		else {
+		} else {
 			return kontingent;
 		}
 	}
-	public String toString(){
-		String køn="";
-		if(this.isGender()){
-			 køn="mand";
+
+	public String toString() {
+		String køn = "";
+		if (this.isGender()) {
+			køn = "mand";
+		} else {
+			køn = "kvinde";
 		}
-		else {
-			køn="kvinde";
-		}
-		String s=medlemsnummer+" | "+navn+" | "+Medlem.getAlder(this.getFoedselsdag())+ " | " +køn+ " | " +harBetalt;
+		String s = medlemsnummer + " | " + navn + " | " + Medlem.getAlder(this.getFoedselsdag()) + " | " + køn + " | " + harBetalt;
 		return s;
 	}
 
-	public static ArrayList<Medlem> opretMedlem(ArrayList<Medlem> medlemmer) {
+	public static ArrayList<Medlem> opretMedlem(ArrayList<Medlem> medlemmer) throws Exception {
 		// TODO - implement Delfinen.opretMedlem
-		Scanner sc=new Scanner(System.in);
+		Scanner sc = new Scanner(System.in);
 		System.out.println("indtast medlemsnavn: ");
-		String navn= sc.nextLine();
+		String navn = sc.nextLine();
 		System.out.println(" indtast fødselsdag som YYYY-MM-DD: ");
 		//DateTimeFormatter format = DateTimeFormatter.ofPattern("YYYY-MM-DD");
-		String date =sc.next();
+		String date = sc.next();
 
 		//convert String to LocalDate
 		LocalDate bday = LocalDate.parse(date);
 
-
 		System.out.println(" indtast køn: M/K: ");
-		boolean gender=false;
-		if (sc.next().equalsIgnoreCase("M")){
-			gender=true;
+		boolean gender = false;
+		if (sc.next().equalsIgnoreCase("M")) {
+			gender = true;
 		}
 		System.out.println(" Har medlem betalt? [J/N]");
 		boolean harBetalt = false;
-		if (sc.next().equalsIgnoreCase("J")){
+		if (sc.next().equalsIgnoreCase("J")) {
 			harBetalt = true;
 		}
 		System.out.println("ønsker du at være aktivt medlem? [J/N]");
-		if (sc.next().equalsIgnoreCase("N")){
-			Medlem nytmedlem=new PassivMedlem(navn,bday,gender, harBetalt);
+		if (sc.next().equalsIgnoreCase("N")) {
+			Medlem nytmedlem = new PassivMedlem(navn, bday, gender, harBetalt);
+			nytmedlem.setType("PassivMedlem");
+			//Delfinen.skrivMedlemmerTilFil(nytmedlem);
 			medlemmer.add(nytmedlem);
 			return medlemmer;
 		}
 		System.out.println("ønsker du at være konkurrencesvømmer? [J/N]");
 		if (sc.next().equalsIgnoreCase("n")) {
 			Medlem nytmedlem = new Medlem(navn, bday, gender, harBetalt);
+			nytmedlem.setType("Medlem");
+			//Delfinen.skrivMedlemmerTilFil(nytmedlem);
 			medlemmer.add(nytmedlem);
 			return medlemmer;
 		}
-		String aktivdisciplin="";
+		String aktivdisciplin = "";
 		System.out.println("tast de discipliner du vil stille op i, uden komma i mellem: ");
 		System.out.println("brystsvømnin=b, crawl=c, ryg=r, butterfly=f");
-		aktivdisciplin=aktivdisciplin.concat(sc.next());
+		aktivdisciplin = aktivdisciplin.concat(sc.next());
 
-		Medlem nytmedlem=new Konkurrencesvømmer(navn, bday, gender, harBetalt, aktivdisciplin);
+		Medlem nytmedlem = new Konkurrencesvømmer(navn, bday, gender, harBetalt, aktivdisciplin);
+		nytmedlem.setType("Konkurrencesvømmer");
+		//Delfinen.skrivMedlemmerTilFil(nytmedlem);
 		medlemmer.add(nytmedlem);
 		return medlemmer;
-
 
 
 		// tilføj nyt medlem til ArrayList
 
 
 	}
+
+	public int getMedlemsnummer() {
+		return medlemsnummer;
+	}
 }
+
