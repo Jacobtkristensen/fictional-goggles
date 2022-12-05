@@ -18,6 +18,12 @@ public class Svømmedisciplin implements Serializable {
 		this.resultater=new Resultat();
 		this.currentbest=this.resultater.getResult();
 	}
+	public Svømmedisciplin(String disciplinnavn, LocalTime resultat){
+		this.disciplinNavn=disciplinNavn;
+		this.resultater= new Resultat();
+		this.currentbest=resultat;
+		this.resultater.setBedsteTid(resultat);
+	}
 	public String getDisciplinNavn() {
 		return disciplinNavn;
 	}

@@ -61,4 +61,7 @@ public class Resultat implements Serializable {
 		return this.bedsteTid.format(tidsformat);
 
 	}
+	public void setBedsteTid(LocalTime res){
+		this.bedsteTid=res;
+	}
 }
