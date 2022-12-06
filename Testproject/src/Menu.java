@@ -3,15 +3,16 @@ import java.util.Scanner;
 public class Menu {
 
    /* System.out.println("Hvad ønsker du at gøre? ");
-		System.out.println("[1] Stamoplysninger.");
+	    System.out.println("[1] Stamoplysninger.");
 		System.out.println("[2] Kontingentoplysninger.");
 		System.out.println("[3] Svømmeresultater.");
 		System.out.println("[4] Indlæs eller skriv til Medlemsfil.");
-
+        System.out.println("[0] Afslut. ");
 		try { //Hovedmenu.
         Scanner scn = new Scanner(System.in);
 
-        switch (scn.next()) {
+        switch (scn.nextInt()) {
+            case 0: // System.out.println("Farvel."); break;
             case 1: // kald stamoplysningermenu.
             case 2: // Kontingentmenu.
             case 3: // Svømmemenu
@@ -27,15 +28,18 @@ public class Menu {
         System.out.println("[2] Rediger stamoplysninger.");
         System.out.println("[3] Slet medlem.");
         System.out.println("[4] Se medlemliste.");
+        System.out.println("[0] Afslut. ");
 
         try {
             Scanner scn = new Scanner(System.in);
 
             switch (scn.nextInt()) {
+                case 0: // System.out.println("Farvel."); break;
                 case 1: //Opret Medlem
                 case 2: // Rediger stam.
                 case 3: // Slet medlem
                 case 4: // se medlemsliste
+
             }
         } catch (Exception e) {
             System.out.println("Forkert indtastning, prøv igen");
@@ -45,11 +49,12 @@ public class Menu {
         System.out.println("Hvad ønsker du at gøre? ");
         System.out.println("[1] Se restance.");
         System.out.println("[2] Betalingsoversigt.");
-
+        System.out.println("[0] Afslut. ");
         try {
             Scanner scn = new Scanner(System.in);
 
             switch (scn.nextInt()) {
+                case 0: // System.out.println("Farvel."); break;
                 case 1: //Se restance.
                 case 2: //Betalingsoversigt.
 
@@ -66,10 +71,12 @@ public class Menu {
         System.out.println("[2] Se top 5 svømmere.");
         System.out.println("[3] Rediger discipliner.");
         System.out.println("[4] Se konkurrencesvømmere.");
+        System.out.println("[0] Afslut. ");
         try {
             Scanner scn = new Scanner(System.in);
 
             switch (scn.nextInt()) {
+                case 0: // System.out.println("Farvel."); break;
                 case 1: //opdater res.
                 case 2: //Top 5.
                 case 3: //red disc.
@@ -88,10 +95,12 @@ public class Menu {
         System.out.println("[2] Se top 5 svømmere.");
         System.out.println("[3] Rediger discipliner.");
         System.out.println("[4] Se konkurrencesvømmere.");
+        System.out.println("[0] Afslut. ");
         try {
         Scanner scn = new Scanner(System.in);
 
         switch (scn.nextInt()) {
+            case 0: // System.out.println("Farvel."); break;
             case 1: //opdater res.
             case 2: //Top 5.
             case 3: //red disc.
@@ -106,11 +115,13 @@ public class Menu {
         System.out.println("Hvad ønsker du at gøre? ");
         System.out.println("[1] Indlæs medlemsfil.");
         System.out.println("[2] Rediger i eksisterende medlemmer.");
+        System.out.println("[0] Afslut.");
 
         try {
             Scanner scn = new Scanner(System.in);
 
             switch (scn.nextInt()) {
+                case 0: // System.out.println("Farvel."); break;
                 case 1: //indlæs medlemsfil.
                 case 2: //rediger i medlemsfil.
 
