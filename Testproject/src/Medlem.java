@@ -174,7 +174,7 @@ public class Medlem implements Serializable {
 	public int getMedlemsnummer() {
 		return medlemsnummer;
 	}
-
+//Skriv til fil og indlæs fra fil
 	public static void skrivMedlemmerTilFil(Medlem m) throws FileNotFoundException {
 		File medlemsliste = new File("medlemsliste.txt");
 		PrintStream medlemprint = new PrintStream(new FileOutputStream(medlemsliste, true));
@@ -198,14 +198,15 @@ public class Medlem implements Serializable {
 			line= sc.nextLine();
 			Scanner nsc=new Scanner(line);
 			while (nsc.hasNext()) {
-				antalMedlemmer = nsc.nextInt();
-				medlemnr = nsc.nextInt();
+
+				antalMedlemmer = Integer.parseInt(String.valueOf(nsc.next()));
+				medlemnr = Integer.parseInt(String.valueOf(nsc.next()));
 				medlemnavn = nsc.next();
 				bday = LocalDate.parse(nsc.next());
-				isMale = nsc.nextBoolean();
+				isMale = Boolean.parseBoolean(nsc.next());
 				memberType = nsc.next();
-				fee = nsc.nextDouble(); //int medlemsnummer, String navn, LocalDate foedselsdag, boolean gender, String type, double kontingent, boolean harBetalt
-				hasPaid = nsc.nextBoolean();
+				fee = Double.parseDouble(nsc.next()); //int medlemsnummer, String navn, LocalDate foedselsdag, boolean gender, String type, double kontingent, boolean harBetalt
+				hasPaid = Boolean.parseBoolean(nsc.next());
 				if (memberType.equals("Medlem") || memberType.equals("PassivMedlem")) {
 					Medlem nytMedlem = new Medlem(medlemnr, medlemnavn, bday, isMale, memberType, fee, hasPaid);
 					medlemmer.add(nytMedlem);
@@ -215,7 +216,7 @@ public class Medlem implements Serializable {
 					LocalTime[] res=new LocalTime[4];
 
 						for(int i=0;i<4;i++){
-							aktivediscipliner[i]=nsc.nextBoolean();
+							aktivediscipliner[i]=Boolean.parseBoolean(nsc.next());
 						}
 						for(int j=0;j<4;j++) {
 							if (aktivediscipliner[j]) {
@@ -229,16 +230,18 @@ public class Medlem implements Serializable {
 					Medlem nytMedlem=new Konkurrencesvømmer(medlemnr, medlemnavn, bday, isMale, memberType, fee, hasPaid,aktivediscipliner,res);
 						medlemmer.add(nytMedlem);
 					}
+						if(nsc.hasNext()){
+							nsc.nextLine();
+						}
 
 
 
-					//nu skal der indlæses værdier i de forskellige arrays: hvordan får vi læst "udenom" [] og ,
-					// jeg har overloadet constructorer i Medlem, Konkurence og svømmedisciplinklasse så jeg kan instantiere
-					//nye objecter og tilføjer medlemmerArraylisten.
 
 				}
 
-			}
+
+
+			} //end og while
 
 			return medlemmer;
 
