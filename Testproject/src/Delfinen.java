@@ -53,10 +53,16 @@ public class Delfinen {
 	}
 
 	public static void main(String[] args) throws Exception {
-		// TODO - implement Delfinen.main
-	//ArrayList<Medlem> medlemmer=new ArrayList<>();
-		//medlemmer=Medlem.indlæsMedlemmer();
-		for(Medlem m: Medlem.indlæsMedlemmer()){
+		/*
+		File memberlist=new File("medlemsliste.txt");
+		if (memberlist.exists()) System.out.println("filen findes");
+		tjek inden indlæs om filen findes
+		 */
+
+
+	ArrayList<Medlem> medlemmer=Medlem.indlæsMedlemmer();
+
+		for(Medlem m: medlemmer){
 			System.out.println(m.printTilKonsol());
 		}
 
