@@ -2,6 +2,7 @@
 
 import java.io.*;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.Period;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -36,6 +37,17 @@ public class Medlem implements Serializable {
 		this.gender = gender;
 		this.harBetalt = harBetalt;
 		this.kontingent = this.beregnKontingent();
+	}
+
+	public Medlem(int medlemsnummer, String navn, LocalDate foedselsdag, boolean gender, String type, double kontingent, boolean harBetalt) {
+		this.medlemsnummer = medlemsnummer;
+		medlemmer++;
+		this.navn = navn;
+		this.foedselsdag = foedselsdag;
+		this.gender = gender;
+		this.type = type;
+		this.kontingent = kontingent;
+		this.harBetalt = harBetalt;
 	}
 
 	public boolean isGender() {
@@ -166,6 +178,51 @@ public class Medlem implements Serializable {
 		File medlemsliste = new File("medlemsliste.txt");
 		PrintStream medlemprint = new PrintStream(new FileOutputStream(medlemsliste, true));
 		medlemprint.println(m);
+
+	}
+	public static ArrayList<Medlem> indlæsMedlemmer() throws FileNotFoundException{
+		Scanner sc=new Scanner(new File("medlemsliste.txt"));
+		ArrayList<Medlem> medlemmer=new ArrayList<>();
+		int antalMedlemmer;
+		int medlemnr;
+		String medlemnavn;
+		LocalDate bday;
+		boolean isMale;
+		String memberType;
+		double fee;
+		boolean hasPaid;
+		String line="";
+		while (sc.hasNextLine()){
+			line= sc.nextLine();
+			Scanner nsc=new Scanner(line);
+			while (nsc.hasNext()) {
+				antalMedlemmer = nsc.nextInt();
+				medlemnr = nsc.nextInt();
+				medlemnavn = nsc.next();
+				bday = LocalDate.parse(nsc.next());
+				isMale = nsc.nextBoolean();
+				memberType = nsc.next();
+				fee = nsc.nextDouble(); //int medlemsnummer, String navn, LocalDate foedselsdag, boolean gender, String type, double kontingent, boolean harBetalt
+				hasPaid = nsc.nextBoolean();
+				if (memberType.equals("Medlem") || memberType.equals("PassivMedlem")) {
+					Medlem nytMedlem = new Medlem(medlemnr, medlemnavn, bday, isMale, memberType, fee, hasPaid);
+					medlemmer.add(nytMedlem);
+				}
+				else{
+					boolean[] a=new boolean[4];
+					Svømmedisciplin[] s=new Svømmedisciplin[4];
+					LocalTime[] res=new LocalTime[4];
+					//nu skal der indlæses værdier i de forskellige arrays: hvordan får vi læst "udenom" [] og ,
+					// jeg har overloadet constructorer i Medlem, Konkurence og svømmedisciplinklasse så jeg kan instantiere
+					//nye objecter og tilføjer medlemmerArraylisten.
+
+				}
+
+			}
+
+
+
+		}
 
 	}
 }

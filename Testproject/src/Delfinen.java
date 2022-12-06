@@ -70,7 +70,7 @@ public class Delfinen {
 		for (Medlem m : medlemmer) {
 			System.out.println(m.printTilKonsol());
 			System.out.println(m);
-			Medlem.skrivMedlemmerTilFil(m);
+
 		}
 		//Konkurrencesvømmer m1=(Konkurrencesvømmer) medlemmer.get(0);
 		//m1.getDiscipliner()[0].opdaterResutater(1);
