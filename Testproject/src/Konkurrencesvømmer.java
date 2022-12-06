@@ -20,7 +20,7 @@ public class Konkurrencesvømmer extends Medlem implements Serializable {
 		}
 
 	}
-	public Konkurrencesvømmer(String navn, LocalDate bday, boolean gender, boolean harBetalt, String disciplinset){
+	public Konkurrencesvømmer(String navn, LocalDate bday, boolean gender, boolean harBetalt, String disciplinset){ //til at oprette nye medlemmer
 		super(navn,bday,gender, harBetalt);
 		this.aktivdisciplin=setAktivDiscipliner(disciplinset);
 		 DateTimeFormatter tidsformat = DateTimeFormatter.ofPattern("HH:mm:ss.SSS");
@@ -41,11 +41,50 @@ public class Konkurrencesvømmer extends Medlem implements Serializable {
 					discipliner[i]=new Svømmedisciplin("butterfly");
 				}
 			}
+			resultater[i]=initialtider;
 		}
 
-		 tider="23:59:59.002";
-		 initialtider=LocalTime.parse(tider,tidsformat);
-		Arrays.fill(resultater,initialtider);
+
+		 //tider="23:59:59.002";
+		// initialtider=LocalTime.parse(tider,tidsformat);
+		//Arrays.fill(resultater,initialtider);
+	}
+	public Konkurrencesvømmer(int medlemsnummer, String navn, LocalDate foedselsdag, boolean gender, String type, double kontingent, boolean harBetalt,boolean[] aktivdisciplins, LocalTime[] bedsteresultater){ // til at indlæse medlemmer fra fil
+		super(medlemsnummer, navn,foedselsdag,gender,type, kontingent, harBetalt);
+		this.aktivdisciplin=setAktivDiscipliner(aktivdisciplins);
+		DateTimeFormatter tidsformat = DateTimeFormatter.ofPattern("HH:mm:ss.SSS");
+		String tider="23:59:59.999";
+		LocalTime initialtider=LocalTime.parse(tider,tidsformat);
+		for (int i=0;i<4;i++){
+			if(aktivdisciplin[i]){
+				if(i==0){    //"brystsvømning=b, crawl=c, ryg=r, butterfly=f"
+					discipliner[i]=new Svømmedisciplin("brystsvømning");
+					discipliner[i].getResultater().setBedsteTid(bedsteresultater[i]);
+					resultater[i]=bedsteresultater[i];
+				}
+				if(i==1){
+					discipliner[i]=new Svømmedisciplin("crawl");
+					discipliner[i].getResultater().setBedsteTid(bedsteresultater[i]);
+					resultater[i]=bedsteresultater[i];
+				}
+				if(i==2){
+					discipliner[i]=new Svømmedisciplin("ryg");
+					discipliner[i].getResultater().setBedsteTid(bedsteresultater[i]);
+					resultater[i]=bedsteresultater[i];
+				}
+				if(i==3){
+					discipliner[i]=new Svømmedisciplin("butterfly");
+					discipliner[i].getResultater().setBedsteTid(bedsteresultater[i]);
+					resultater[i]=bedsteresultater[i];
+				}
+			}
+			else {
+				resultater[i]=initialtider;
+			}
+
+
+		}
+
 	}
 
 	public String printTilKonsol(){
@@ -54,7 +93,13 @@ public class Konkurrencesvømmer extends Medlem implements Serializable {
 	}
 
 	public String toString(){
-		String s=super.toString()+" "+Arrays.toString(aktivdisciplin)+" "+Arrays.toString(discipliner)+" "+Arrays.toString(resultater);
+		String a="",d="",r="";
+		for(int i=0;i<4;i++){
+			a=a.concat(aktivdisciplin[i]+" ");
+			d=d.concat(discipliner[i]+" ");
+			r=r.concat(resultater[i]+" ");
+		}
+		String s=super.toString()+" "+a+" "+d+" "+r;
 		return s;
 	}
 	public boolean[] setAktivDiscipliner(String disciplinset) {
@@ -72,6 +117,14 @@ public class Konkurrencesvømmer extends Medlem implements Serializable {
 		}
 		return aktivdisciplin;
 	}
+
+	public boolean[] setAktivDiscipliner(boolean[] aktivdisciplins) {
+		for (int i=0;i<4;i++) {
+			this.aktivdisciplin[i] = aktivdisciplin[i];
+		}
+		return aktivdisciplin;
+	}
+
 	public void GetResults() {
 
 		for (int i=0;i<4;i++){
@@ -79,7 +132,7 @@ public class Konkurrencesvømmer extends Medlem implements Serializable {
 				resultater[i]= discipliner[i].getResultater().getResult();
 			}
 			else{
-				resultater[i]=LocalTime.parse("23:59:59.000",tidsformat);
+				resultater[i]=LocalTime.parse("23:59:59.999",tidsformat);
 			}
 		}
 	}
