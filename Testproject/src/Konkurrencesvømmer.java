@@ -56,30 +56,30 @@ public class Konkurrencesvømmer extends Medlem implements Serializable {
 		String tider="23:59:59.999";
 		LocalTime initialtider=LocalTime.parse(tider,tidsformat);
 		for (int i=0;i<4;i++){
-			if(aktivdisciplin[i]){
+			if(this.aktivdisciplin[i]){
 				if(i==0){    //"brystsvømning=b, crawl=c, ryg=r, butterfly=f"
-					discipliner[i]=new Svømmedisciplin("brystsvømning");
-					discipliner[i].getResultater().setBedsteTid(bedsteresultater[i]);
-					resultater[i]=bedsteresultater[i];
+					this.discipliner[i]=new Svømmedisciplin("brystsvømning");
+					this.discipliner[i].getResultater().setBedsteTid(bedsteresultater[i]);
+					this.resultater[i]=bedsteresultater[i];
 				}
 				if(i==1){
-					discipliner[i]=new Svømmedisciplin("crawl");
-					discipliner[i].getResultater().setBedsteTid(bedsteresultater[i]);
-					resultater[i]=bedsteresultater[i];
+					this.discipliner[i]=new Svømmedisciplin("crawl");
+					this.discipliner[i].getResultater().setBedsteTid(bedsteresultater[i]);
+					this.resultater[i]=bedsteresultater[i];
 				}
 				if(i==2){
-					discipliner[i]=new Svømmedisciplin("ryg");
-					discipliner[i].getResultater().setBedsteTid(bedsteresultater[i]);
-					resultater[i]=bedsteresultater[i];
+					this.discipliner[i]=new Svømmedisciplin("ryg");
+					this.discipliner[i].getResultater().setBedsteTid(bedsteresultater[i]);
+					this.resultater[i]=bedsteresultater[i];
 				}
 				if(i==3){
-					discipliner[i]=new Svømmedisciplin("butterfly");
-					discipliner[i].getResultater().setBedsteTid(bedsteresultater[i]);
-					resultater[i]=bedsteresultater[i];
+					this.discipliner[i]=new Svømmedisciplin("butterfly");
+					this.discipliner[i].getResultater().setBedsteTid(bedsteresultater[i]);
+					this.resultater[i]=bedsteresultater[i];
 				}
 			}
 			else {
-				resultater[i]=initialtider;
+				this.resultater[i]=initialtider;
 			}
 
 
@@ -120,7 +120,12 @@ public class Konkurrencesvømmer extends Medlem implements Serializable {
 
 	public boolean[] setAktivDiscipliner(boolean[] aktivdisciplins) {
 		for (int i=0;i<4;i++) {
-			this.aktivdisciplin[i] = aktivdisciplin[i];
+			if( aktivdisciplins[i]){
+				aktivdisciplin[i]=true;
+			}
+			else{
+				aktivdisciplin[i]=false;
+			}
 		}
 		return aktivdisciplin;
 	}
