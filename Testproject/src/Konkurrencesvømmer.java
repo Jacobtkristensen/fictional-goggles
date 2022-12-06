@@ -144,7 +144,12 @@ public class Konkurrencesvømmer extends Medlem implements Serializable {
 
 
 	public void tilføjDisciplin() {
-		System.out.println("kommer");
+		System.out.println("svømmeren er aktiv i følgende discipliner");
+		for(int i=0;i<aktivdisciplin.length;i++){
+			if(aktivdisciplin[i]){
+				System.out.println(getDiscipliner()[i].getDisciplinNavn());
+			}
+		}
 	}
 	public Svømmedisciplin[] getDiscipliner() {
 		return discipliner;
