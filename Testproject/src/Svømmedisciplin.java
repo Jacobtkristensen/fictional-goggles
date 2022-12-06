@@ -32,7 +32,7 @@ public class Svømmedisciplin implements Serializable {
 		return resultater;
 	}
 	public String toString(){
-		return "["+ this.getDisciplinNavn()+", "+getResultater().getResult()+"]";
+		return " "+ this.getDisciplinNavn()+" "+getResultater().getResult()+" ";
 	}
 	public void opdaterResutater(int trænerinput) { //del af trænerens muligheder
 
