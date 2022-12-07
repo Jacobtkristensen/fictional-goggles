@@ -60,7 +60,7 @@ public class Delfinen {
 		 */
 
 
-	ArrayList<Medlem> medlemmer=Medlem.indlæsMedlemmer();
+	ArrayList<Medlem> medlemmer=Medlemsadministration.indlæsMedlemmer();
 
 		for(Medlem m: medlemmer){
 			System.out.println(m.printTilKonsol());
@@ -101,6 +101,8 @@ public class Delfinen {
 
 		//Indlæs medlemsliste, hvis tom opret nogle medlemmer.
 		Menu.hovedmenu();
+
+
 
 
 		System.out.println("hej");
