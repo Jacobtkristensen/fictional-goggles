@@ -63,6 +63,7 @@ public class Medlemsadministration {
 
     public static void skrivMedlemmerTilFil(Medlem m) throws FileNotFoundException {
         File medlemsliste = new File("medlemsliste.txt");
+
         PrintStream medlemprint = new PrintStream(new FileOutputStream(medlemsliste, true));
         medlemprint.println(m);
 
