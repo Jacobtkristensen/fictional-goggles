@@ -1,3 +1,4 @@
+import java.io.File;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -7,6 +8,14 @@ public class Menu {
 
 
     public static void hovedmenu() {
+      /*  File memberlist=new File("medlemsliste.txt");
+        if (memberlist.exists()) {
+            ;
+            ArrayList<Medlem> medlemmer = Medlemsadministration.indlæsMedlemmer();
+        }
+        else {
+            ArrayList<Medlem> medlemmer=new ArrayList<>();
+        }*/
         boolean loop = true;
 
         while (loop) {
