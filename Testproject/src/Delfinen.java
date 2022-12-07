@@ -82,6 +82,8 @@ public class Delfinen {
 		for (Medlem m : medlemmer) {
 			System.out.println(m.printTilKonsol());
 			System.out.println(m);
+			Medlem.skrivMedlemmerTilFil(m);
+		}
 
 		}*/
 		//Konkurrencesvømmer m1=(Konkurrencesvømmer) medlemmer.get(0);
@@ -97,12 +99,8 @@ public class Delfinen {
 		}*/
 
 
-/*
-		System.out.println("Hvad ønsker du at gøre? ");
-		System.out.println("[1] Stamoplysninger.");
-		System.out.println("[2] Kontingentoplysninger.");
-		System.out.println("[3] Svømmeresultater.");
-		System.out.println("[4] Indlæs eller skriv til Medlemsfil.");
+		//Indlæs medlemsliste, hvis tom opret nogle medlemmer.
+		//Menu.hovedmenu();
 
 		try { //Hovedmenu.
 			Scanner scn = new Scanner(System.in);
