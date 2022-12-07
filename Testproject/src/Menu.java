@@ -1,9 +1,14 @@
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Menu {
+
+
+
     public static void hovedmenu() {
         boolean loop = true;
+
         while (loop) {
             try {
 
@@ -18,6 +23,8 @@ public class Menu {
                 Scanner scn = new Scanner(System.in);
 
                 switch (scn.nextInt()) {
+                    case 0: loop = false;
+                        break;
 
                     case 1:
                         stamoplysninger();
