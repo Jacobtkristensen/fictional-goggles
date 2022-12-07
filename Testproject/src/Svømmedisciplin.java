@@ -34,28 +34,6 @@ public class Svømmedisciplin implements Serializable {
 	public String toString(){
 		return " "+ this.getDisciplinNavn()+" "+getResultater().getResult()+" ";
 	}
-	public void opdaterResutater(int trænerinput) { //del af trænerens muligheder
 
-		Scanner sc= new Scanner(System.in);
-		switch (trænerinput){
-			case 1:
-			System.out.println("indtast træningsdato som [YYYY-MM-DD]: ");
-			String dato=sc.next();
-			System.out.println("indtast træningstid som [HH:MM:ss.SSS]: ");
-			String træningstid=sc.next();
-			this.resultater.setTræningsresultater(dato,træningstid);
-			break;
-			case 2:
-				System.out.println("indtast stævnenavn");
-				String stævnenavn=sc.next();
-				System.out.println("indtast placering: ");
-				int placering=sc.nextInt();
-				System.out.println("indtast tid som [HH:MM:SS,nn]:");
-				String tid=sc.next();
-				this.resultater.setStævneresultater(stævnenavn,placering,tid);
-				break;
-		}
-
-	}
 
 }
