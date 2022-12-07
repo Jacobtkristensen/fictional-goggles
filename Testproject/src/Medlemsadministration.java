@@ -130,7 +130,7 @@ public class Medlemsadministration {
 
     }
 
-    public static void opdaterResutater(Konkurrencesvømmer k, int disciplinnummer, int trænerinput) { //del af trænerens muligheder
+    public static void opdaterResultater(Konkurrencesvømmer k, int disciplinnummer, int trænerinput) { //del af trænerens muligheder
 
         Scanner sc= new Scanner(System.in);
         switch (trænerinput){
