@@ -36,7 +36,7 @@ public class Medlemsadministration {
         if (sc.next().equalsIgnoreCase("N")) {
             Medlem nytmedlem = new PassivMedlem(navn, bday, gender, harBetalt);
             nytmedlem.setType("PassivMedlem");
-            Medlem.skrivMedlemmerTilFil(nytmedlem);
+            skrivMedlemmerTilFil(nytmedlem);
             medlemmer.add(nytmedlem);
             return medlemmer;
         }
@@ -44,7 +44,7 @@ public class Medlemsadministration {
         if (sc.next().equalsIgnoreCase("n")) {
             Medlem nytmedlem = new Medlem(navn, bday, gender, harBetalt);
             nytmedlem.setType("Medlem");
-            Medlem.skrivMedlemmerTilFil(nytmedlem);
+            skrivMedlemmerTilFil(nytmedlem);
             medlemmer.add(nytmedlem);
             return medlemmer;
         }
@@ -55,7 +55,7 @@ public class Medlemsadministration {
 
         Medlem nytmedlem = new Konkurrencesvømmer(navn, bday, gender, harBetalt, aktivdisciplin);
         nytmedlem.setType("Konkurrencesvømmer");
-        Medlem.skrivMedlemmerTilFil(nytmedlem);
+        skrivMedlemmerTilFil(nytmedlem);
         medlemmer.add(nytmedlem);
         return medlemmer;
         // tilføj nyt medlem til ArrayList
