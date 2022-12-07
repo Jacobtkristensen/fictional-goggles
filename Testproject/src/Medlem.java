@@ -176,7 +176,7 @@ public class Medlem implements Serializable {
 	}
 //Skriv til fil og indlæs fra fil
 	public static void skrivMedlemmerTilFil(Medlem m) throws FileNotFoundException {
-		File medlemsliste = new File("medlemsliste.txt");
+		File medlemsliste = new File("medlemsliste2");
 		PrintStream medlemprint = new PrintStream(new FileOutputStream(medlemsliste, true));
 		medlemprint.println(m);
 
