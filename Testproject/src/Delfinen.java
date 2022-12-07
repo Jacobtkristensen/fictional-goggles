@@ -53,8 +53,20 @@ public class Delfinen {
 	}
 
 	public static void main(String[] args) throws Exception {
-		// TODO - implement Delfinen.main
-		ArrayList<Medlem> medlemmer = new ArrayList<>();
+		/*
+		File memberlist=new File("medlemsliste.txt");
+		if (memberlist.exists()) System.out.println("filen findes");
+		tjek inden indlæs om filen findes
+		 */
+
+
+	ArrayList<Medlem> medlemmer=Medlem.indlæsMedlemmer();
+
+		for(Medlem m: medlemmer){
+			System.out.println(m.printTilKonsol());
+		}
+
+	/*	ArrayList<Medlem> medlemmer = new ArrayList<>();
 		Scanner sc = new Scanner(System.in);
 		System.out.println("vil du oprette et nyt medlem? ");
 		String userinput = sc.next();
@@ -71,7 +83,7 @@ public class Delfinen {
 			System.out.println(m.printTilKonsol());
 			System.out.println(m);
 
-		}
+		}*/
 		//Konkurrencesvømmer m1=(Konkurrencesvømmer) medlemmer.get(0);
 		//m1.getDiscipliner()[0].opdaterResutater(1);
 		//System.out.println(m1);
