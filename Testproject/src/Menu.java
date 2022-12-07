@@ -48,70 +48,86 @@ public class Menu {
         }
     }
     public static void stamoplysninger() {
+        boolean loop = true;
+
+        while (loop) {
+            try {
+
+                System.out.println("Stamoplysninger.");
+                System.out.println("Hvad Ønsker du at gøre?");
+                System.out.println("1: Opret medlem.");
+                System.out.println("2: Redigerer Stamoplysninger.");
+                System.out.println("3: Slet medlem.");
+                System.out.println("4: Se medlemsliste.");
+                System.out.println("0: Tilbage til Hovedmenu.");
 
 
+                Scanner scn = new Scanner(System.in);
 
-        System.out.println("Stamoplysninger.");
-        System.out.println("Hvad Ønsker du at gøre?");
-        System.out.println("1: Opret medlem.");
-        System.out.println("2: Redigerer Stamoplysninger.");
-        System.out.println("3: Slet medlem.");
-        System.out.println("4: Se medlemsliste.");
-        System.out.println("0: Tilbage til Hovedmenu.");
-
-
-        Scanner scn = new Scanner(System.in);
-
-        switch (scn.nextInt()) {
-            case 0:
-                hovedmenu();
-                break;
-            case 1:
-                opretMedlem();
-                break;
-            case 2:
-                redStamoplysninger();
-                break;
-            case 3:
-                sletMedlem();
-                break;
-            case 4:
-                medlemsliste();
-                break;
-            default:
-                System.out.println("Forker indtastning, tast 1,2,3 eller 4.");
+                switch (scn.nextInt()) {
+                    case 0:
+                        loop = false;
+                        hovedmenu();
+                        break;
+                    case 1:
+                        opretMedlem();
+                        break;
+                    case 2:
+                        redStamoplysninger();
+                        break;
+                    case 3:
+                        sletMedlem();
+                        break;
+                    case 4:
+                        medlemsliste();
+                        break;
+                    default:
+                        System.out.println("Forker indtastning, tast 1,2,3 eller 4.");
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Forkert indtastning, tast 1,2,3 eller 4.");
+            }
         }
-
     }
 
     public static void kontingentoplysninger() {
 
-        System.out.println("kontingentoplysninger.");
-        System.out.println("Hvad Ønsker du at gøre?");
-        System.out.println("1: Se restance.");
-        System.out.println("2: Redigerer betaling.");
-        System.out.println("3: Hent kontingentliste.");
-        System.out.println("0: Tilbage til Hovedmenu.");
+        boolean loop = true;
 
-        Scanner scn = new Scanner(System.in);
+        while (loop) {
+            try {
 
-        switch (scn.nextInt()) {
-            case 0:
-                hovedmenu();
-                break;
-            case 1:
-                seRestance();
-                break;
-            case 2:
-                redBetaling();
-                break;
-            case 3:
-                kontingentliste();
-                break;
-            default:
-                System.out.println("Forker indtastning, tast 1,2 eller 3.");
+
+                System.out.println("kontingentoplysninger.");
+                System.out.println("Hvad Ønsker du at gøre?");
+                System.out.println("1: Se restance.");
+                System.out.println("2: Redigerer betaling.");
+                System.out.println("3: Hent kontingentliste.");
+                System.out.println("0: Tilbage til Hovedmenu.");
+
+                Scanner scn = new Scanner(System.in);
+
+                switch (scn.nextInt()) {
+                    case 0:
+                        hovedmenu();
+                        break;
+                    case 1:
+                        seRestance();
+                        break;
+                    case 2:
+                        redBetaling();
+                        break;
+                    case 3:
+                        kontingentliste();
+                        break;
+                    default:
+                        System.out.println("Forker indtastning, tast 1,2 eller 3.");
+                }
+
+            } catch (InputMismatchException e) {
+                System.out.println("Forkert indtastning, tast 1,2,3 eller 4.");
+            }
         }
-
     }
 
     public static void svommeresultater() {
