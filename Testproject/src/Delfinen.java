@@ -53,8 +53,20 @@ public class Delfinen {
 	}
 
 	public static void main(String[] args) throws Exception {
-		// TODO - implement Delfinen.main
-		ArrayList<Medlem> medlemmer = new ArrayList<>();
+		/*
+		File memberlist=new File("medlemsliste.txt");
+		if (memberlist.exists()) System.out.println("filen findes");
+		tjek inden indlæs om filen findes
+		 */
+
+
+	ArrayList<Medlem> medlemmer=Medlem.indlæsMedlemmer();
+
+		for(Medlem m: medlemmer){
+			System.out.println(m.printTilKonsol());
+		}
+
+	/*	ArrayList<Medlem> medlemmer = new ArrayList<>();
 		Scanner sc = new Scanner(System.in);
 		System.out.println("vil du oprette et nyt medlem? ");
 		String userinput = sc.next();
@@ -73,10 +85,37 @@ public class Delfinen {
 			Medlem.skrivMedlemmerTilFil(m);
 		}
 
+		}*/
+		//Konkurrencesvømmer m1=(Konkurrencesvømmer) medlemmer.get(0);
+		//m1.getDiscipliner()[0].opdaterResutater(1);
+		//System.out.println(m1);
+	/*	ArrayList<Medlem> test=new ArrayList<>();
+		try {
+			test= indlæsMedlemmer();
+			System.out.println(test.get(0));
+		}
+		catch (FileNotFoundException f){
+			System.out.println("something went south..sour..sucked.. "+f);
+		}*/
+
+
 		//Indlæs medlemsliste, hvis tom opret nogle medlemmer.
 		//Menu.hovedmenu();
 
+		try { //Hovedmenu.
+			Scanner scn = new Scanner(System.in);
 
+			switch (scn.nextInt()) {
+				case 1: Menu.StamoplysningMenu();
+				case 2: Menu.Kontingentmenu();
+				case 3: Menu.SvømmeresultatMenu();
+				case 4: Menu.IndlæsSkrivMedlemsfil();
+			}
+		} catch (Exception e) {
+			System.out.println("Forkert indtastning, prøv igen");
+		}
+
+*/
 		System.out.println("hej");
 
 	}

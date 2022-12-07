@@ -16,7 +16,7 @@ public class Resultat implements Serializable {
 
 	public Resultat(){
 
-		String tider="23:59:59.001";
+		String tider="23:59:59.999";
 		LocalTime initialtider=LocalTime.parse(tider,tidsformat);
 		this.træningstid=initialtider;
 		this.stævnetid=initialtider;
@@ -60,5 +60,8 @@ public class Resultat implements Serializable {
 	public String toString(){
 		return this.bedsteTid.format(tidsformat);
 
+	}
+	public void setBedsteTid(LocalTime res){
+		this.bedsteTid=res;
 	}
 }
