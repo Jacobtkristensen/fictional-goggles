@@ -23,10 +23,10 @@ public class Menu {
                 Scanner scn = new Scanner(System.in);
 
                 switch (scn.nextInt()) {
-                    case 0: loop = false;
+                    case 0:
+                        loop = false;
                         break;
-
-                    case 1:
+                        case 1:
                         stamoplysninger();
                         break;
                     case 2:
@@ -38,8 +38,7 @@ public class Menu {
                     case 4:
                         medlemsliste();
                         break;
-                    default:
-                        System.out.println("Forkert indtastning, tast 1,2,3 eller 4.");
+
                 }
             } catch (InputMismatchException e) {
                 System.out.println("Forkert indtastning, tast 1,2,3 eller 4.");
@@ -109,6 +108,7 @@ public class Menu {
 
                 switch (scn.nextInt()) {
                     case 0:
+                        loop = false;
                         hovedmenu();
                         break;
                     case 1:
@@ -132,35 +132,43 @@ public class Menu {
 
     public static void svommeresultater() {
 
+        boolean loop = true;
+        while(loop) {
+            try {
 
-        System.out.println("Svømmeresultater.");
-        System.out.println("Hvad Ønsker du at gøre?");
-        System.out.println("1: Opdater resultater.");
-        System.out.println("2: Se top 5 svømmere.");
-        System.out.println("3: Rediger disciplin.");
-        System.out.println("4: Se konkurrencesvømmerliste.");
-        System.out.println("0: Tilbage til Hovedmenu.");
 
-        Scanner scn = new Scanner(System.in);
+                System.out.println("Svømmeresultater.");
+                System.out.println("Hvad Ønsker du at gøre?");
+                System.out.println("1: Opdater resultater.");
+                System.out.println("2: Se top 5 svømmere.");
+                System.out.println("3: Rediger disciplin.");
+                System.out.println("4: Se konkurrencesvømmerliste.");
+                System.out.println("0: Tilbage til Hovedmenu.");
 
-        switch (scn.nextInt()) {
-            case 0:
-                hovedmenu();
-                break;
-            case 1:
-                opdaterResultater();
-                break;
-            case 2:
-                seTopFem();
-                break;
-            case 3:
-                redDisciplin();
-                break;
-            case 4:
-                konkurrencesvoemmerliste();
-                break;
-            default:
-                System.out.println("Forker indtastning, tast 1,2,3 eller 4.");
+                Scanner scn = new Scanner(System.in);
+
+                switch (scn.nextInt()) {
+                    case 0: loop = false;
+                        hovedmenu();
+                        break;
+                    case 1:
+                        opdaterResultater();
+                        break;
+                    case 2:
+                        seTopFem();
+                        break;
+                    case 3:
+                        redDisciplin();
+                        break;
+                    case 4:
+                        konkurrencesvoemmerliste();
+                        break;
+                    default:
+                        System.out.println("Forker indtastning, tast 1,2,3 eller 4.");
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Forkert indtastning, tast 1,2,3 eller 4.");
+            }
         }
 
     }

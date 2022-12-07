@@ -130,7 +130,7 @@ public class Medlemsadministration {
     public static void seTop5(ArrayList<Medlem> medlemmer, String discplinKønAlder){
 
     }
-
+/*
     public static void opdaterResultater(Konkurrencesvømmer k, int disciplinnummer, int trænerinput) { //del af trænerens muligheder
 
         Scanner sc= new Scanner(System.in);
@@ -153,5 +153,5 @@ public class Medlemsadministration {
                 break;
         }
 
-    }
+    }*/
 }
