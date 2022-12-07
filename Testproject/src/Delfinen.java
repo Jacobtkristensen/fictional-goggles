@@ -60,7 +60,7 @@ public class Delfinen {
 		 */
 
 
-	ArrayList<Medlem> medlemmer=Medlem.indlæsMedlemmer();
+	ArrayList<Medlem> medlemmer=Medlemsadministration.indlæsMedlemmer();
 
 		for(Medlem m: medlemmer){
 			System.out.println(m.printTilKonsol());
@@ -100,22 +100,11 @@ public class Delfinen {
 
 
 		//Indlæs medlemsliste, hvis tom opret nogle medlemmer.
-		//Menu.hovedmenu();
+		Menu.hovedmenu();
 
-		try { //Hovedmenu.
-			Scanner scn = new Scanner(System.in);
 
-			switch (scn.nextInt()) {
-				case 1: Menu.StamoplysningMenu();
-				case 2: Menu.Kontingentmenu();
-				case 3: Menu.SvømmeresultatMenu();
-				case 4: Menu.IndlæsSkrivMedlemsfil();
-			}
-		} catch (Exception e) {
-			System.out.println("Forkert indtastning, prøv igen");
-		}
 
-*/
+
 		System.out.println("hej");
 
 	}
