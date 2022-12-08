@@ -281,7 +281,7 @@ public class Medlemsadministration {
                 medlemmer.get(mnr - 1).setNavn(nytNavn);
                 break;
             case 2:
-                System.out.println("vil ændre til pasivt medlemskab? [J/N]: ");
+                System.out.println("vil ændre til passivt medlemskab? [J/N]: ");
                 rep = sc.next();
                 if (rep.equalsIgnoreCase("j")) {
                     medlemmer.get(mnr - 1).setType("PassivMedlem");
