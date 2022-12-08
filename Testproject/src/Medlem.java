@@ -18,6 +18,7 @@ public class Medlem implements Serializable {
 	private double kontingent = 0;
 	private boolean harBetalt;
 
+
 	//Constructors. no-arg constructor must be available
 	public Medlem() {
 		this.medlemsnummer = medlemmer + 1;
@@ -119,6 +120,10 @@ public class Medlem implements Serializable {
 
 	public int getMedlemsnummer() {
 		return medlemsnummer;
+	}
+
+	public void setNavn(String nytnavn) {
+		this.navn=nytnavn;
 	}
 //Skriv til fil og indlæs fra fil
 

@@ -9,6 +9,10 @@ public class PassivMedlem extends Medlem implements Serializable {
         super();
     }
 
+    public PassivMedlem(int medlemnr, String medlemnavn, LocalDate bday, boolean isMale, String memberType, double fee, boolean hasPaid) {
+   super(medlemnr,medlemnavn,bday,isMale,memberType,fee,hasPaid);
+    }
+
 
     @Override
     public double beregnKontingent() {
