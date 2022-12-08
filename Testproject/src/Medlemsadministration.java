@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 public class Medlemsadministration {
     //Formandens muligheder og standardadministration
-    public static ArrayList<Medlem> opretMedlem(ArrayList<Medlem> medlemmer) throws Exception {
+    public static ArrayList<Medlem> opretMedlem(ArrayList<Medlem> medlemmer) {
 
         Scanner sc = new Scanner(System.in);
         System.out.println("indtast medlemsnavn: ");
@@ -37,7 +37,9 @@ public class Medlemsadministration {
         if (sc.next().equalsIgnoreCase("N")) {
             Medlem nytmedlem = new PassivMedlem(navn, bday, gender, harBetalt);
             nytmedlem.setType("PassivMedlem");
-            skrivMedlemmerTilFil(nytmedlem);
+
+                skrivMedlemmerTilFil(nytmedlem);
+
             medlemmer.add(nytmedlem);
             return medlemmer;
         }
@@ -63,11 +65,17 @@ public class Medlemsadministration {
         // tilføj nyt medlem til ArrayList
     }
 
-    public static void skrivMedlemmerTilFil(Medlem m) throws FileNotFoundException {
-        File medlemsliste = new File("medlemsliste.txt");
+    public static void skrivMedlemmerTilFil(Medlem m){
+        try {
+            File medlemsliste = new File("medlemsliste.txt");
+            PrintStream medlemprint = new PrintStream(new FileOutputStream(medlemsliste, true));
+            medlemprint.println(m);
+        }
+        catch (Exception e){
+            System.out.println("noget gik galt "+ e);
+        }
 
-        PrintStream medlemprint = new PrintStream(new FileOutputStream(medlemsliste, true));
-        medlemprint.println(m);
+
 
     }
     public static ArrayList<Medlem> indlæsMedlemmer() throws FileNotFoundException {
@@ -144,7 +152,8 @@ public class Medlemsadministration {
     public static void seTop5(ArrayList<Medlem> medlemmer, String discplinKønAlder) {
         ArrayList<Konkurrencesvømmer> top5 = new ArrayList<>();
         SorterResultat sort= new SorterResultat(0);
-        for (Medlem m : medlemmer) {1
+        for (Medlem m:medlemmer) {
+
             if (m.getType().equals("Konkurrencesvømmer")) {
                 Konkurrencesvømmer k = (Konkurrencesvømmer) m;
                 if (discplinKønAlder.contains("b")) {         //Brystsvømning
