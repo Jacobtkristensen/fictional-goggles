@@ -48,6 +48,7 @@ public class Medlemsadministration {
             medlemmer.add(nytmedlem);
             return medlemmer;
         }
+        else{
         String aktivdisciplin = "";
         System.out.println("tast de discipliner du vil stille op i, uden komma i mellem: ");
         System.out.println("brystsvømnin=b, crawl=c, ryg=r, butterfly=f");
@@ -56,7 +57,7 @@ public class Medlemsadministration {
         Medlem nytmedlem = new Konkurrencesvømmer(navn, bday, gender, harBetalt, aktivdisciplin);
         nytmedlem.setType("Konkurrencesvømmer");
         skrivMedlemmerTilFil(nytmedlem);
-        medlemmer.add(nytmedlem);
+        medlemmer.add(nytmedlem);}
         return medlemmer;
         // tilføj nyt medlem til ArrayList
     }
@@ -94,11 +95,14 @@ public class Medlemsadministration {
                 memberType = nsc.next();
                 fee = Double.parseDouble(nsc.next()); //int medlemsnummer, String navn, LocalDate foedselsdag, boolean gender, String type, double kontingent, boolean harBetalt
                 hasPaid = Boolean.parseBoolean(nsc.next());
-                if (memberType.equals("Medlem") || memberType.equals("PassivMedlem")) {
+                if (memberType.equals("Medlem")) {
                     Medlem nytMedlem = new Medlem(medlemnr, medlemnavn, bday, isMale, memberType, fee, hasPaid);
                     medlemmer.add(nytMedlem);
                 }
-                else{
+                if (memberType.equals("PassivMedlem")) {
+                    PassivMedlem nytmedlem=new PassivMedlem(medlemnr, medlemnavn, bday, isMale, memberType, fee, hasPaid)
+
+                } else{
                     boolean[] aktivediscipliner=new boolean[4];
                     LocalTime[] res=new LocalTime[4];
 
@@ -129,6 +133,89 @@ public class Medlemsadministration {
     //Trænerens muligheder
     public static void seTop5(ArrayList<Medlem> medlemmer, String discplinKønAlder){
 
+    }
+
+
+    public static void seMedlemsListe(ArrayList<Medlem> medlemmer) {
+        for(Medlem m:medlemmer){
+            System.out.println(m.printTilKonsol());
+        }
+    }
+
+    public static ArrayList<Medlem>  sletMedlem(ArrayList<Medlem> medlemmer, int mnr) {
+        File medlemsliste = new File("medlemsliste.txt");
+        PrintStream medlemprint = new PrintStream(new FileOutputStream(medlemsliste));//den gamle fil overskrives
+        medlemmer.remove(mnr-1);
+        for(Medlem m:medlemmer){
+            medlemprint.println(m);
+        }
+        return medlemmer;
+
+    }
+
+    public static ArrayList<Medlem> redigerStamoplysninger(ArrayList<Medlem> medlemmer, int mnr) {
+        Scanner sc=new Scanner(System.in);
+        System.out.println(" hvilke stamoplysninger øsnker du at ændre?: ");
+        System.out.println("1: ændre navn");
+        System.out.println("2: ændre medlemskab");
+        System.out.println("3: tilføje eller fjerne svømmediscipliner");
+        System.out.println("4: afslut og returner til hovedmenu");
+        int valg=sc.nextInt();
+        String rep;
+        switch (valg) {
+            case 1:
+                System.out.println("indtast det nye navn");
+                String nytNavn = sc.nextLine();
+                if (nytNavn.contains(" ")) {
+                    nytNavn.replace(" ", "_");
+                }
+                medlemmer.get(mnr - 1).setNavn(nytNavn);
+                break;
+            case 2:
+                System.out.println("vil ændre til pasivt medlemskab? [J/N]: ");
+                rep = sc.next();
+                if (rep.equalsIgnoreCase("j")) {
+                    medlemmer.get(mnr - 1).setType("PassivMedlem");
+                    File medlemsliste = new File("medlemsliste.txt");
+                    PrintStream medlemprint = new PrintStream(new FileOutputStream(medlemsliste));//den gamle fil overskrives
+                    for (Medlem m : medlemmer) {
+                        medlemprint.println(m);
+                    }
+                    medlemmer = indlæsMedlemmer();
+                }
+                    System.out.println("vil du ændre til aktivt medlemskab (Motionist)? [J/N]: ");
+                    rep = sc.next();
+                if (rep.equalsIgnoreCase("j")) {
+                    medlemmer.get(mnr - 1).setType("Medlem");
+                    File medlemsliste = new File("medlemsliste.txt");
+                    PrintStream medlemprint = new PrintStream(new FileOutputStream(medlemsliste));//den gamle fil overskrives
+                    for (Medlem m : medlemmer) {
+                        medlemprint.println(m);
+                    }
+                    medlemmer = indlæsMedlemmer();
+                }
+                    System.out.println("vil du ændre til konkurrencesvømmer? ");
+                    rep= sc.next();
+                if (rep.equalsIgnoreCase("j")) {
+                    medlemmer.get(mnr - 1).setType("Konkurrencesvømmer");
+                    File medlemsliste = new File("medlemsliste.txt");
+                    PrintStream medlemprint = new PrintStream(new FileOutputStream(medlemsliste));//den gamle fil overskrives
+                    for (Medlem m : medlemmer) {
+                        medlemprint.println(m);
+                    }
+                    medlemmer = indlæsMedlemmer();
+                    valg=3;
+                }
+                    return medlemmer;
+                    break;
+            case 3:
+                System.out.println("vil du tilføje discipliner");
+                Konkurrencesvømmer k=(Konkurrencesvømmer) medlemmer.get(mnr-1);
+                k.tilføjDisciplin();
+
+
+            }
+        }
     }
 /*
     public static void opdaterResultater(Konkurrencesvømmer k, int disciplinnummer, int trænerinput) { //del af trænerens muligheder
