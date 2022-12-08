@@ -20,6 +20,7 @@ public class Konkurrencesvømmer extends Medlem implements Serializable {
 		}
 
 	}
+	// til at nyoprette et medlem
 	public Konkurrencesvømmer(String navn, LocalDate bday, boolean gender, boolean harBetalt, String disciplinset){ //til at oprette nye medlemmer
 		super(navn,bday,gender, harBetalt);
 		this.aktivdisciplin=setAktivDiscipliner(disciplinset);
@@ -49,6 +50,7 @@ public class Konkurrencesvømmer extends Medlem implements Serializable {
 		// initialtider=LocalTime.parse(tider,tidsformat);
 		//Arrays.fill(resultater,initialtider);
 	}
+	// til at oprette et medlem fra fil
 	public Konkurrencesvømmer(int medlemsnummer, String navn, LocalDate foedselsdag, boolean gender, String type, double kontingent, boolean harBetalt,boolean[] aktivdisciplins, LocalTime[] bedsteresultater){ // til at indlæse medlemmer fra fil
 		super(medlemsnummer, navn,foedselsdag,gender,type, kontingent, harBetalt);
 		this.aktivdisciplin=setAktivDiscipliner(aktivdisciplins);
@@ -102,7 +104,7 @@ public class Konkurrencesvømmer extends Medlem implements Serializable {
 		String s=super.toString()+" "+a+" "+d+" "+r;
 		return s;
 	}
-	public boolean[] setAktivDiscipliner(String disciplinset) {
+	public boolean[] setAktivDiscipliner(String disciplinset) { //til
 		if(disciplinset.contains("b")){
 			aktivdisciplin[0]=true;
 		}
@@ -130,7 +132,7 @@ public class Konkurrencesvømmer extends Medlem implements Serializable {
 		return aktivdisciplin;
 	}
 
-	public void GetResults() {
+	public void getResults() {
 
 		for (int i=0;i<4;i++){
 			if(aktivdisciplin[i]){
