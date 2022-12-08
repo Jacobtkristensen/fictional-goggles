@@ -371,7 +371,9 @@ public class Medlemsadministration {
         Scanner sc= new Scanner(System.in);
         switch (trænerinput){
             case 1:
+
                 System.out.println("indtast træningsdato som [YYYY-MM-DD]: ");
+
                 String dato=sc.next();
                 System.out.println("indtast træningstid som [HH:MM:ss.SSS]: ");
                 String træningstid=sc.next();
