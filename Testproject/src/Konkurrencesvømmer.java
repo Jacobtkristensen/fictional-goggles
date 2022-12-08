@@ -3,6 +3,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class Konkurrencesvømmer extends Medlem implements Serializable {
 	private boolean[] aktivdisciplin=new boolean[4];
@@ -149,6 +150,7 @@ public class Konkurrencesvømmer extends Medlem implements Serializable {
 
 
 	public void tilføjDisciplin() {
+		Scanner sc=new Scanner(System.in);
 		System.out.println("svømmeren er aktiv i følgende discipliner");
 		for(int i=0;i<aktivdisciplin.length;i++){
 			if(aktivdisciplin[i]){
@@ -157,7 +159,12 @@ public class Konkurrencesvømmer extends Medlem implements Serializable {
 		}
 		System.out.println("hvilke discpliner vil tilføje/ændre?: ");
 		System.out.println("1: brystsvømning");
-		System.out.println("");
+		System.out.println("2: crawl");
+		System.out.println("3: rygsvømning");
+		System.out.println("4: Butterfly");
+		int valg;
+		valg=sc.nextInt();
+		switch (valg)
 	}
 	public Svømmedisciplin[] getDiscipliner() {
 		return discipliner;
