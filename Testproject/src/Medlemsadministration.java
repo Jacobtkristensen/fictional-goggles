@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class Medlemsadministration {
@@ -100,7 +101,7 @@ public class Medlemsadministration {
                     medlemmer.add(nytMedlem);
                 }
                 if (memberType.equals("PassivMedlem")) {
-                    PassivMedlem nytmedlem=new PassivMedlem(medlemnr, medlemnavn, bday, isMale, memberType, fee, hasPaid)
+                    PassivMedlem nytmedlem=new PassivMedlem(medlemnr, medlemnavn, bday, isMale, memberType, fee, hasPaid);
 
                 } else{
                     boolean[] aktivediscipliner=new boolean[4];
@@ -131,11 +132,112 @@ public class Medlemsadministration {
         return medlemmer;
     }
     //Trænerens muligheder
-    public static void seTop5(ArrayList<Medlem> medlemmer, String discplinKønAlder){
+    public static void seTop5(ArrayList<Medlem> medlemmer, String discplinKønAlder) {
+        ArrayList<Konkurrencesvømmer> top5 = new ArrayList<>();
+        for (Medlem m : medlemmer) {
+            if (m.getType().equals("Konkurrencesvømmer")) {
+                Konkurrencesvømmer k = (Konkurrencesvømmer) m;
+                if (discplinKønAlder.contains("b")) {         //Brystsvømning
+                    if (discplinKønAlder.contains("mj")) {
+                        if (k.getAktivdisciplin()[0] && k.isGender() && k.getAlder(k.getFoedselsdag()) < 18) {
+                            top5.add(k);
+                        }
+                    }
+                    if (discplinKønAlder.contains("kj")) {
+                        if (k.getAktivdisciplin()[0] && !k.isGender() && k.getAlder(k.getFoedselsdag()) < 18) {
+                            top5.add(k);
+                        }
+                    }
+                    if (discplinKønAlder.contains("ks")) {
+                        if (k.getAktivdisciplin()[0] && !k.isGender() && k.getAlder(k.getFoedselsdag()) >= 18) {
+                            top5.add(k);
+                        }
+                    }
+                    if (discplinKønAlder.contains("ms")) {
+                        if (k.getAktivdisciplin()[0] && k.isGender() && k.getAlder(k.getFoedselsdag()) >= 18) {
+                            top5.add(k);
+                        }
+                    }
+                }
+                Collections.sort(top5, new SorterResultat(0))
+                if (discplinKønAlder.contains("c")) {         //crawl
+                    if (discplinKønAlder.contains("mj")) {
+                        if (k.getAktivdisciplin()[1] && k.isGender() && k.getAlder(k.getFoedselsdag()) < 18) {
+                            top5.add(k);
+                        }
+                    }
+                    if (discplinKønAlder.contains("kj")) {
+                        if (k.getAktivdisciplin()[1] && !k.isGender() && k.getAlder(k.getFoedselsdag()) < 18) {
+                            top5.add(k);
+                        }
+                    }
+                    if (discplinKønAlder.contains("ks")) {
+                        if (k.getAktivdisciplin()[1] && !k.isGender() && k.getAlder(k.getFoedselsdag()) >= 18) {
+                            top5.add(k);
+                        }
+                    }
+                    if (discplinKønAlder.contains("ms")) {
+                        if (k.getAktivdisciplin()[1] && k.isGender() && k.getAlder(k.getFoedselsdag()) >= 18) {
+                            top5.add(k);
+                        }
+                    }
+                }
+                if (discplinKønAlder.contains("r")) {         //ryg
+                    if (discplinKønAlder.contains("mj")) {
+                        if (k.getAktivdisciplin()[2] && k.isGender() && k.getAlder(k.getFoedselsdag()) < 18) {
+                            top5.add(k);
+                        }
+                    }
+                    if (discplinKønAlder.contains("kj")) {
+                        if (k.getAktivdisciplin()[2] && !k.isGender() && k.getAlder(k.getFoedselsdag()) < 18) {
+                            top5.add(k);
+                        }
+                    }
+                    if (discplinKønAlder.contains("ks")) {
+                        if (k.getAktivdisciplin()[2] && !k.isGender() && k.getAlder(k.getFoedselsdag()) >= 18) {
+                            top5.add(k);
+                        }
+                    }
+                    if (discplinKønAlder.contains("ms")) {
+                        if (k.getAktivdisciplin()[2] && k.isGender() && k.getAlder(k.getFoedselsdag()) >= 18) {
+                            top5.add(k);
+                        }
+                    }
+                }
+                if (discplinKønAlder.contains("f")) {         //butterfly
+                    if (discplinKønAlder.contains("mj")) {
+                        if (k.getAktivdisciplin()[3] && k.isGender() && k.getAlder(k.getFoedselsdag()) < 18) {
+                            top5.add(k);
+                        }
+                    }
+                    if (discplinKønAlder.contains("kj")) {
+                        if (k.getAktivdisciplin()[3] && !k.isGender() && k.getAlder(k.getFoedselsdag()) < 18) {
+                            top5.add(k);
+                        }
+                    }
+                    if (discplinKønAlder.contains("ks")) {
+                        if (k.getAktivdisciplin()[3] && !k.isGender() && k.getAlder(k.getFoedselsdag()) >= 18) {
+                            top5.add(k);
+                        }
+                    }
+                    if (discplinKønAlder.contains("ms")) {
+                        if (k.getAktivdisciplin()[3] && k.isGender() && k.getAlder(k.getFoedselsdag()) >= 18) {
+                            top5.add(k);
+                        }
+                    }
+                }
+
+            }
+
+
+        }
+    Collections.sort(top5, new SorterResultat());
+        for(int i = 0; i<5; i++){
+            System.out.println(top5.get(i).printTilKonsol());
+        }
 
 
     }
-
 
     public static void seMedlemsListe(ArrayList<Medlem> medlemmer) {
         for(Medlem m:medlemmer){

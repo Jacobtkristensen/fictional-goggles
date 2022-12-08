@@ -132,7 +132,10 @@ public class Konkurrencesvømmer extends Medlem implements Serializable {
 		return aktivdisciplin;
 	}
 
-	public void getResults() {
+	public boolean[] getAktivdisciplin() {
+		return aktivdisciplin;
+	}
+	public LocalTime getResults() {
 
 		for (int i=0;i<4;i++){
 			if(aktivdisciplin[i]){
