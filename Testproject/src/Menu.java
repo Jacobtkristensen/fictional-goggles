@@ -5,18 +5,16 @@ import java.util.Scanner;
 
 public class Menu {
 
+public ArrayList<Medlem> medlemmer=new ArrayList<>();
 
-
-    public static void hovedmenu() {
+    public void hovedmenu() {
        try{
         File memberlist=new File("medlemsliste.txt");
         if (memberlist.exists()) {
             ;
             ArrayList<Medlem> medlemmer = Medlemsadministration.indlæsMedlemmer();
         }
-        else {
-            ArrayList<Medlem> medlemmer=new ArrayList<>();
-        }
+
        }
        catch (Exception e){
            System.out.println("Der opstod en fejl: "+e);
@@ -43,16 +41,16 @@ public class Menu {
                         loop = false;
                         break;
                     case 1:
-                        stamoplysninger();
+                        stamoplysninger(medlemmer);
                         break;
                     case 2:
-                        kontingentoplysninger();
+                        kontingentoplysninger(medlemmer);
                         break;
                     case 3:
-                        svommeresultater();
+                        svommeresultater(medlemmer);
                         break;
                     case 4:
-                        medlemsliste();
+                        medlemsliste(medlemmer);
                         break;
                     default:
                         System.out.println("Forkert indtastning, tast 1,2,3 eller 4.");
@@ -63,7 +61,7 @@ public class Menu {
 
         }
     }
-    public static void stamoplysninger( ArrayList<Medlem> medlemmer) {
+    public static ArrayList<Medlem> stamoplysninger( ArrayList<Medlem> medlemmer) {
         boolean loop = true;
 
         while (loop) {
@@ -86,7 +84,7 @@ public class Menu {
                         hovedmenu();
                         break;
                     case 1:
-                        opretMedlem();
+                        opretMedlem(medlemmer);
                         break;
                     case 2:
                         redStamoplysninger(medlemmer);
@@ -106,7 +104,7 @@ public class Menu {
         }
     }
 
-    public static void kontingentoplysninger( ArrayList<Medlem> medlemmer) {
+    public static ArrayList<Medlem> kontingentoplysninger( ArrayList<Medlem> medlemmer) {
 
         boolean loop = true;
 
@@ -129,16 +127,16 @@ public class Menu {
                         hovedmenu();
                         break;
                     case 1:
-                        seRestance();
+                        seRestance(medlemmer);
                         break;
                     case 2:
-                        redBetaling();
+                        regBetaling(medlemmer);
                         break;
                     case 3:
-                        kontingentliste();
+                        kontingentliste(medlemmer);
                         break;
                     default:
-                        System.out.println("Forker indtastning, tast 1,2 eller 3.");
+                        System.out.println("Forkert indtastning, tast 1,2 eller 3.");
                 }
 
             } catch (InputMismatchException e) {
@@ -169,10 +167,10 @@ public class Menu {
                         hovedmenu();
                         break;
                     case 1:
-                        opdaterResultater();
+                        opdaterResultater(medlemmer);
                         break;
                     case 2:
-                        seTopFem();
+                        seTopFem(medlemmer);
                         break;
                     case 3:
                         redDisciplin();
@@ -227,8 +225,16 @@ public class Menu {
         System.out.println("Kald restanceliste");
     }
 
-    public static ArrayList<Medlem> redBetaling(ArrayList<Medlem> medlemmer) {
-        System.out.println("kald betalingsliste");
+    public static ArrayList<Medlem> regBetaling(ArrayList<Medlem> medlemmer) {
+        Medlemsadministration.seMedlemsListe( medlemmer);
+        System.out.println("Indtast medlemsnummer");
+
+        Scanner scn = new Scanner(System.in);
+        int mnr = -1;
+        scn.nextInt();
+        medlemmer.get(mnr-1).setHarBetalt();
+        return medlemmer;
+
     }
 
     public static void kontingentliste() {
@@ -239,7 +245,7 @@ public class Menu {
         System.out.println("Kald metode for opdater resultater");
     }
 
-    public static void seTopFem() {
+    public static void seTopFem(ArrayList<Medlem> medlemmer) {
         String topFem = "";
 
         Scanner scn = new Scanner(System.in);
@@ -248,9 +254,7 @@ public class Menu {
         topFem = kon(scn, topFem);
         topFem = alder(scn, topFem);
 
-
-
-        System.out.println(topFem);
+        Medlemsadministration.seTop5(medlemmer,topFem);
     }
 
     public static void redDisciplin() {

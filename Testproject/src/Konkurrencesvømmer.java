@@ -3,6 +3,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class Konkurrencesvømmer extends Medlem implements Serializable {
 	private boolean[] aktivdisciplin=new boolean[4];
@@ -20,6 +21,7 @@ public class Konkurrencesvømmer extends Medlem implements Serializable {
 		}
 
 	}
+	// til at nyoprette et medlem
 	public Konkurrencesvømmer(String navn, LocalDate bday, boolean gender, boolean harBetalt, String disciplinset){ //til at oprette nye medlemmer
 		super(navn,bday,gender, harBetalt);
 		this.aktivdisciplin=setAktivDiscipliner(disciplinset);
@@ -49,6 +51,7 @@ public class Konkurrencesvømmer extends Medlem implements Serializable {
 		// initialtider=LocalTime.parse(tider,tidsformat);
 		//Arrays.fill(resultater,initialtider);
 	}
+	// til at oprette et medlem fra fil
 	public Konkurrencesvømmer(int medlemsnummer, String navn, LocalDate foedselsdag, boolean gender, String type, double kontingent, boolean harBetalt,boolean[] aktivdisciplins, LocalTime[] bedsteresultater){ // til at indlæse medlemmer fra fil
 		super(medlemsnummer, navn,foedselsdag,gender,type, kontingent, harBetalt);
 		this.aktivdisciplin=setAktivDiscipliner(aktivdisciplins);
@@ -102,7 +105,7 @@ public class Konkurrencesvømmer extends Medlem implements Serializable {
 		String s=super.toString()+" "+a+" "+d+" "+r;
 		return s;
 	}
-	public boolean[] setAktivDiscipliner(String disciplinset) {
+	public boolean[] setAktivDiscipliner(String disciplinset) { //til
 		if(disciplinset.contains("b")){
 			aktivdisciplin[0]=true;
 		}
@@ -147,6 +150,7 @@ public class Konkurrencesvømmer extends Medlem implements Serializable {
 
 
 	public void tilføjDisciplin() {
+		Scanner sc=new Scanner(System.in);
 		System.out.println("svømmeren er aktiv i følgende discipliner");
 		for(int i=0;i<aktivdisciplin.length;i++){
 			if(aktivdisciplin[i]){
@@ -155,7 +159,12 @@ public class Konkurrencesvømmer extends Medlem implements Serializable {
 		}
 		System.out.println("hvilke discpliner vil tilføje/ændre?: ");
 		System.out.println("1: brystsvømning");
-		System.out.println("");
+		System.out.println("2: crawl");
+		System.out.println("3: rygsvømning");
+		System.out.println("4: Butterfly");
+		int valg;
+		valg=sc.nextInt();
+		switch (valg)
 	}
 	public Svømmedisciplin[] getDiscipliner() {
 		return discipliner;

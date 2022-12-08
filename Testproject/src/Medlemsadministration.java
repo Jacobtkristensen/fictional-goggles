@@ -158,8 +158,10 @@ public class Medlemsadministration {
                             top5.add(k);
                         }
                     }
+                    Collections.sort(top5, new SorterResultat(0));
                 }
-                Collections.sort(top5, new SorterResultat(0))
+
+
                 if (discplinKønAlder.contains("c")) {         //crawl
                     if (discplinKønAlder.contains("mj")) {
                         if (k.getAktivdisciplin()[1] && k.isGender() && k.getAlder(k.getFoedselsdag()) < 18) {
@@ -181,6 +183,7 @@ public class Medlemsadministration {
                             top5.add(k);
                         }
                     }
+                    Collections.sort(top5, new SorterResultat(1));
                 }
                 if (discplinKønAlder.contains("r")) {         //ryg
                     if (discplinKønAlder.contains("mj")) {
@@ -203,6 +206,7 @@ public class Medlemsadministration {
                             top5.add(k);
                         }
                     }
+                    Collections.sort(top5, new SorterResultat(2));
                 }
                 if (discplinKønAlder.contains("f")) {         //butterfly
                     if (discplinKønAlder.contains("mj")) {
@@ -225,16 +229,19 @@ public class Medlemsadministration {
                             top5.add(k);
                         }
                     }
+                    Collections.sort(top5, new SorterResultat(3));
                 }
+
 
             }
 
 
         }
-    Collections.sort(top5, new SorterResultat());
+
         for(int i = 0; i<5; i++){
             System.out.println(top5.get(i).printTilKonsol());
         }
+
 
     }
 
@@ -314,12 +321,14 @@ public class Medlemsadministration {
                 System.out.println("vil du tilføje discipliner");
                 Konkurrencesvømmer k=(Konkurrencesvømmer) medlemmer.get(mnr-1);
                 k.tilføjDisciplin();
-
+                return medlemmer;
+                break;
 
             }
         }
+
     }
-/*
+
     public static void opdaterResultater(Konkurrencesvømmer k, int disciplinnummer, int trænerinput) { //del af trænerens muligheder
 
         Scanner sc= new Scanner(System.in);
@@ -344,5 +353,5 @@ public class Medlemsadministration {
                 break;
         }
 
-    }*/
+    }
 }

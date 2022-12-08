@@ -60,10 +60,12 @@ public class Delfinen {
 		 */
 
 
-	ArrayList<Medlem> medlemmer=Medlemsadministration.indlæsMedlemmer();
+//	ArrayList<Medlem> medlemmer=Medlemsadministration.indlæsMedlemmer();
 
-		for(Medlem m: medlemmer){
-			System.out.println(m.printTilKonsol());
+//		for(Medlem m: medlemmer){
+//			System.out.println(m.printTilKonsol());
+		Menu ny=new Menu();
+		Menu.hovedmenu();
 		}
 
 	/*	ArrayList<Medlem> medlemmer = new ArrayList<>();
