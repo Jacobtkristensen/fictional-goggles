@@ -27,7 +27,7 @@ public class Menu {
                 System.out.println("2: kontingentoplysninger.");
                 System.out.println("3: Svømmeresultater.");
                 System.out.println("4: Indlæs medlemsliste.");
-                System.out.println("0: Forlad program."); //Mangler en måde at lukke program.
+                System.out.println("0: Forlad program.");
 
                 Scanner scn = new Scanner(System.in);
 
@@ -35,7 +35,7 @@ public class Menu {
                     case 0:
                         loop = false;
                         break;
-                        case 1:
+                    case 1:
                         stamoplysninger();
                         break;
                     case 2:
@@ -47,9 +47,11 @@ public class Menu {
                     case 4:
                         medlemsliste();
                         break;
+                    default:
+                        System.out.println("Forker indtastning, tast 1,2,3 eller 4.");
 
                 }
-            } catch (InputMismatchException e) {
+           } catch (InputMismatchException e) {
                 System.out.println("Forkert indtastning, tast 1,2,3 eller 4.");
             }
 
@@ -244,85 +246,86 @@ public class Menu {
 
     public static void konkurrencesvoemmerliste() {
         System.out.println("kald konkurrencesvømmerliste");
+
     }
     static String disciplin(Scanner scn, String topFem) {
 
+            System.out.println("Vælg Svømmedisciplin:");
+            System.out.println("1: Bryst");
+            System.out.println("2: Crawl");
+            System.out.println("3: Rygsvømning");
+            System.out.println("4: Butterfly");
+            System.out.println("0: Tilbage til Svømmeresultatmenu");
 
-        System.out.println("Vælg Svømmedisciplin:");
-        System.out.println("1: Bryst");
-        System.out.println("2: Crawl");
-        System.out.println("3: Rygsvømning");
-        System.out.println("4: Butterfly");
-        System.out.println("0: Tilbage til Svømmeresultatmenu");
+            switch (scn.nextInt()) {
+                case 0:
+                    svommeresultater();
+                    break;
+                case 1:
+                    topFem = bryst(topFem);
+                    break;
+                case 2:
+                    topFem = crawl(topFem);
+                    break;
+                case 3:
+                    topFem = ryg(topFem);
+                    break;
+                case 4:
+                    topFem = butterfly(topFem);
+                    break;
+                default:
+                    System.out.println("Forkert indtastning, prøv igen");
 
-        switch (scn.nextInt()) {
-            case 0:
-                svommeresultater();
-                break;
-            case 1:
-                topFem = bryst(topFem);
-                break;
-            case 2:
-                topFem = crawl(topFem);
-                break;
-            case 3:
-                topFem = ryg(topFem);
-                break;
-            case 4:
-                topFem = butterfly(topFem);
-                break;
-            default:
-                System.out.println("Forkert indtastning, tast 1,2,3 eller 4");
-        }
+            }
 
         return topFem;
     }
 
     static String kon(Scanner scn, String topFem) {
 
+                System.out.println("Vælg køn på svømmeren");
+                System.out.println("1: Mand");
+                System.out.println("2: Kvinde");
+                System.out.println("0: Tilbage til Svømmeresultatmenu");
 
-        System.out.println("Vælg køn på svømmeren");
-        System.out.println("1: Mand");
-        System.out.println("2: Kvinde");
-        System.out.println("0: Tilbage til Svømmeresultatmenu");
+                switch (scn.nextInt()) {
+                    case 0:
+                        svommeresultater();
+                        break;
+                    case 1:
+                        topFem = mand(topFem);
+                        break;
+                    case 2:
+                        topFem = kvinde(topFem);
+                        break;
+                    default:
+                        System.out.println("Forkert indtastning, prøv igen");
 
-        switch (scn.nextInt()) {
-            case 0:
-                svommeresultater();
-                break;
-            case 1:
-                topFem = mand(topFem);
-                break;
-            case 2:
-                topFem = kvinde(topFem);
-                break;
-            default:
-                System.out.println("Forkert indtastning, tast 1 eller 2.");
-        }
+                }
         return topFem;
     }
 
     static String alder(Scanner scn, String topFem) {
 
-        System.out.println("Vælg alder på svømmeren");
-        System.out.println("1: Junior");
-        System.out.println("2: Senior");
-        System.out.println("0: Tilbage til Svømmeresultatmenu");
+                System.out.println("Vælg alder på svømmeren");
+                System.out.println("1: Junior");
+                System.out.println("2: Senior");
+                System.out.println("0: Tilbage til Svømmeresultatmenu");
 
-        switch (scn.nextInt()) {
-            case 0:
-                svommeresultater();
-                break;
-            case 1:
-                topFem = junior(topFem);
-                break;
-            case 2:
-                topFem = senior(topFem);
-                break;
-            default:
-                System.out.println("Forkert indtastning, tast 1 eller 2.");
-        }
+                switch (scn.nextInt()) {
+                    case 0:
+                        svommeresultater();
+                        break;
+                    case 1:
+                        topFem = junior(topFem);
+                        break;
+                    case 2:
+                        topFem = senior(topFem);
+                        break;
+                    default:
+                        System.out.println("Forkert indtastning, tast 1 eller 2.");
 
+                }
         return topFem;
     }
 
