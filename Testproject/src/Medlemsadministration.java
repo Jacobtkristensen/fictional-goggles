@@ -70,10 +70,8 @@ public class Medlemsadministration {
         medlemprint.println(m);
 
     }
-    public static ArrayList<Medlem> indlæsMedlemmer() throws FileNotFoundException{
+    public static ArrayList<Medlem> indlæsMedlemmer() throws FileNotFoundException {
         DateTimeFormatter tidsformat = DateTimeFormatter.ofPattern("HH:mm:ss.SSS");
-        Scanner sc=new Scanner(new File("medlemsliste.txt"));
-        ArrayList<Medlem> medlemmer=new ArrayList<>();
         int antalMedlemmer;
         int medlemnr;
         String medlemnavn;
@@ -82,59 +80,71 @@ public class Medlemsadministration {
         String memberType;
         double fee;
         boolean hasPaid;
-        String line="";
-        while (sc.hasNextLine()){
-            line= sc.nextLine();
-            Scanner nsc=new Scanner(line);
-            while (nsc.hasNext()) {
+        String line = "";
+        ArrayList<Medlem> medlemmer = null;
+        try {
+            Scanner sc = new Scanner(new File("medlemsliste.txt"));
+            medlemmer = new ArrayList<>();
 
-                antalMedlemmer = Integer.parseInt(String.valueOf(nsc.next()));
-                medlemnr = Integer.parseInt(String.valueOf(nsc.next()));
-                medlemnavn = nsc.next();
-                bday = LocalDate.parse(nsc.next());
-                isMale = Boolean.parseBoolean(nsc.next());
-                memberType = nsc.next();
-                fee = Double.parseDouble(nsc.next()); //int medlemsnummer, String navn, LocalDate foedselsdag, boolean gender, String type, double kontingent, boolean harBetalt
-                hasPaid = Boolean.parseBoolean(nsc.next());
-                if (memberType.equals("Medlem")) {
-                    Medlem nytMedlem = new Medlem(medlemnr, medlemnavn, bday, isMale, memberType, fee, hasPaid);
-                    medlemmer.add(nytMedlem);
-                }
-                if (memberType.equals("PassivMedlem")) {
-                    PassivMedlem nytmedlem=new PassivMedlem(medlemnr, medlemnavn, bday, isMale, memberType, fee, hasPaid);
 
-                } else{
-                    boolean[] aktivediscipliner=new boolean[4];
-                    LocalTime[] res=new LocalTime[4];
+            while (sc.hasNextLine()) {
+                line = sc.nextLine();
+                Scanner nsc = new Scanner(line);
+                while (nsc.hasNext()) {
 
-                    for(int i=0;i<4;i++){
-                        aktivediscipliner[i]=Boolean.parseBoolean(nsc.next());
+                    antalMedlemmer = Integer.parseInt(String.valueOf(nsc.next()));
+                    medlemnr = Integer.parseInt(String.valueOf(nsc.next()));
+                    medlemnavn = nsc.next();
+                    bday = LocalDate.parse(nsc.next());
+                    isMale = Boolean.parseBoolean(nsc.next());
+                    memberType = nsc.next();
+                    fee = Double.parseDouble(nsc.next()); //int medlemsnummer, String navn, LocalDate foedselsdag, boolean gender, String type, double kontingent, boolean harBetalt
+                    hasPaid = Boolean.parseBoolean(nsc.next());
+                    if (memberType.equals("Medlem")) {
+                        Medlem nytMedlem = new Medlem(medlemnr, medlemnavn, bday, isMale, memberType, fee, hasPaid);
+                        medlemmer.add(nytMedlem);
                     }
-                    for(int j=0;j<4;j++) {
-                        if (aktivediscipliner[j]) {
-                            nsc.next();
-                            res[j] = LocalTime.parse(nsc.next(),tidsformat);
-                        } else {
-                            nsc.next();
-                            res[j] = LocalTime.parse("23:59:59.999",tidsformat);
+                    if (memberType.equals("PassivMedlem")) {
+                        PassivMedlem nytmedlem = new PassivMedlem(medlemnr, medlemnavn, bday, isMale, memberType, fee, hasPaid);
+
+                    } else {
+                        boolean[] aktivediscipliner = new boolean[4];
+                        LocalTime[] res = new LocalTime[4];
+
+                        for (int i = 0; i < 4; i++) {
+                            aktivediscipliner[i] = Boolean.parseBoolean(nsc.next());
                         }
+                        for (int j = 0; j < 4; j++) {
+                            if (aktivediscipliner[j]) {
+                                nsc.next();
+                                res[j] = LocalTime.parse(nsc.next(), tidsformat);
+                            } else {
+                                nsc.next();
+                                res[j] = LocalTime.parse("23:59:59.999", tidsformat);
+                            }
+                        }
+                        Medlem nytMedlem = new Konkurrencesvømmer(medlemnr, medlemnavn, bday, isMale, memberType, fee, hasPaid, aktivediscipliner, res);
+                        medlemmer.add(nytMedlem);
                     }
-                    Medlem nytMedlem=new Konkurrencesvømmer(medlemnr, medlemnavn, bday, isMale, memberType, fee, hasPaid,aktivediscipliner,res);
-                    medlemmer.add(nytMedlem);
-                }
-                if(nsc.hasNext()){
-                    nsc.nextLine();
+                    if (nsc.hasNext()) {
+                        nsc.nextLine();
+                    }
+
                 }
 
             }
-
+            return medlemmer;
+        } catch (FileNotFoundException e) {
+            System.out.println("filen medlemsliste.txt blev ikke fundet");
         }
+
         return medlemmer;
     }
     //Trænerens muligheder
     public static void seTop5(ArrayList<Medlem> medlemmer, String discplinKønAlder) {
         ArrayList<Konkurrencesvømmer> top5 = new ArrayList<>();
-        for (Medlem m : medlemmer) {
+        SorterResultat sort= new SorterResultat(0);
+        for (Medlem m : medlemmer) {1
             if (m.getType().equals("Konkurrencesvømmer")) {
                 Konkurrencesvømmer k = (Konkurrencesvømmer) m;
                 if (discplinKønAlder.contains("b")) {         //Brystsvømning
@@ -158,7 +168,9 @@ public class Medlemsadministration {
                             top5.add(k);
                         }
                     }
-                    Collections.sort(top5, new SorterResultat(0));
+
+                    sort.setIndex(0);
+                    Collections.sort(top5, sort);
                 }
 
 
@@ -183,7 +195,8 @@ public class Medlemsadministration {
                             top5.add(k);
                         }
                     }
-                    Collections.sort(top5, new SorterResultat(1));
+                    sort.setIndex(1);
+                    Collections.sort(top5, sort);
                 }
                 if (discplinKønAlder.contains("r")) {         //ryg
                     if (discplinKønAlder.contains("mj")) {
@@ -206,7 +219,8 @@ public class Medlemsadministration {
                             top5.add(k);
                         }
                     }
-                    Collections.sort(top5, new SorterResultat(2));
+                    sort.setIndex(2);
+                    Collections.sort(top5, sort);
                 }
                 if (discplinKønAlder.contains("f")) {         //butterfly
                     if (discplinKønAlder.contains("mj")) {
@@ -229,7 +243,8 @@ public class Medlemsadministration {
                             top5.add(k);
                         }
                     }
-                    Collections.sort(top5, new SorterResultat(3));
+                    sort.setIndex(3);
+                    Collections.sort(top5, sort);
                 }
 
 
@@ -253,7 +268,12 @@ public class Medlemsadministration {
 
     public static ArrayList<Medlem>  sletMedlem(ArrayList<Medlem> medlemmer, int mnr) {
         File medlemsliste = new File("medlemsliste.txt");
-        PrintStream medlemprint = new PrintStream(new FileOutputStream(medlemsliste));//den gamle fil overskrives
+        PrintStream medlemprint = null;//den gamle fil overskrives
+        try {
+            medlemprint = new PrintStream(new FileOutputStream(medlemsliste));
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
         medlemmer.remove(mnr-1);
         for(Medlem m:medlemmer){
             medlemprint.println(m);
@@ -262,7 +282,7 @@ public class Medlemsadministration {
 
     }
 
-    public static ArrayList<Medlem> redigerStamoplysninger(ArrayList<Medlem> medlemmer, int mnr) {
+    public static ArrayList<Medlem> redigerStamoplysninger(ArrayList<Medlem> medlemmer, int mnr) throws FileNotFoundException {
         Scanner sc=new Scanner(System.in);
         System.out.println(" hvilke stamoplysninger øsnker du at ændre?: ");
         System.out.println("1: ændre navn");
@@ -286,18 +306,32 @@ public class Medlemsadministration {
                 if (rep.equalsIgnoreCase("j")) {
                     medlemmer.get(mnr - 1).setType("PassivMedlem");
                     File medlemsliste = new File("medlemsliste.txt");
-                    PrintStream medlemprint = new PrintStream(new FileOutputStream(medlemsliste));//den gamle fil overskrives
+                    PrintStream medlemprint = null;//den gamle fil overskrives
+                    try {
+                        medlemprint = new PrintStream(new FileOutputStream(medlemsliste));
+                    } catch (FileNotFoundException e) {
+                        throw new RuntimeException(e);
+                    }
                     for (Medlem m : medlemmer) {
                         medlemprint.println(m);
                     }
-                    medlemmer = indlæsMedlemmer();
+                    try {
+                        medlemmer = indlæsMedlemmer();
+                    } catch (FileNotFoundException e) {
+                        throw new RuntimeException(e);
+                    }
                 }
                     System.out.println("vil du ændre til aktivt medlemskab (Motionist)? [J/N]: ");
                     rep = sc.next();
                 if (rep.equalsIgnoreCase("j")) {
                     medlemmer.get(mnr - 1).setType("Medlem");
                     File medlemsliste = new File("medlemsliste.txt");
-                    PrintStream medlemprint = new PrintStream(new FileOutputStream(medlemsliste));//den gamle fil overskrives
+                    PrintStream medlemprint = null;//den gamle fil overskrives
+                    try {
+                        medlemprint = new PrintStream(new FileOutputStream(medlemsliste));
+                    } catch (FileNotFoundException e) {
+                        throw new RuntimeException(e);
+                    }
                     for (Medlem m : medlemmer) {
                         medlemprint.println(m);
                     }
@@ -315,19 +349,22 @@ public class Medlemsadministration {
                     medlemmer = indlæsMedlemmer();
                     valg=3;
                 }
+                else {
                     return medlemmer;
+                }
                     break;
             case 3:
                 System.out.println("vil du tilføje discipliner");
                 Konkurrencesvømmer k=(Konkurrencesvømmer) medlemmer.get(mnr-1);
                 k.tilføjDisciplin();
-                return medlemmer;
+                //return medlemmer;
                 break;
 
             }
-        }
-
+        return medlemmer;
     }
+
+
 
     public static void opdaterResultater(Konkurrencesvømmer k, int disciplinnummer, int trænerinput) { //del af trænerens muligheder
 

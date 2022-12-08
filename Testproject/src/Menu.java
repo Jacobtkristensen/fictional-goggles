@@ -1,18 +1,19 @@
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Menu {
 
-public ArrayList<Medlem> medlemmer=new ArrayList<>();
+//public ArrayList<Medlem> medlemmer=new ArrayList<>();
 
-    public void hovedmenu() {
+    public static void hovedmenu(ArrayList<Medlem> medlemmer) {
        try{
         File memberlist=new File("medlemsliste.txt");
         if (memberlist.exists()) {
-            ;
-            ArrayList<Medlem> medlemmer = Medlemsadministration.indlæsMedlemmer();
+
+             medlemmer = Medlemsadministration.indlæsMedlemmer();
         }
 
        }
@@ -81,7 +82,7 @@ public ArrayList<Medlem> medlemmer=new ArrayList<>();
                 switch (scn.nextInt()) {
                     case 0:
                         loop = false;
-                        hovedmenu();
+                        hovedmenu(medlemmer);
                         break;
                     case 1:
                         opretMedlem(medlemmer);
@@ -93,7 +94,7 @@ public ArrayList<Medlem> medlemmer=new ArrayList<>();
                         medlemmer= sletMedlem(medlemmer);
                         break;
                     case 4:
-                        medlemsliste();
+                        medlemsliste(medlemmer);
                         break;
                     default:
                         System.out.println("Forker indtastning, tast 1,2,3 eller 4.");
@@ -102,6 +103,7 @@ public ArrayList<Medlem> medlemmer=new ArrayList<>();
                 System.out.println("Forkert indtastning, tast 1,2,3 eller 4.");
             }
         }
+        return medlemmer;
     }
 
     public static ArrayList<Medlem> kontingentoplysninger( ArrayList<Medlem> medlemmer) {
@@ -124,7 +126,7 @@ public ArrayList<Medlem> medlemmer=new ArrayList<>();
                 switch (scn.nextInt()) {
                     case 0:
                         loop = false;
-                        hovedmenu();
+                        hovedmenu(medlemmer);
                         break;
                     case 1:
                         seRestance(medlemmer);
@@ -143,6 +145,7 @@ public ArrayList<Medlem> medlemmer=new ArrayList<>();
                 System.out.println("Forkert indtastning, tast 1,2,3 eller 4.");
             }
         }
+        return medlemmer;
     }
 
     public static void svommeresultater( ArrayList<Medlem> medlemmer) {
@@ -164,7 +167,7 @@ public ArrayList<Medlem> medlemmer=new ArrayList<>();
 
                 switch (scn.nextInt()) {
                     case 0: loop = false;
-                        hovedmenu();
+                        hovedmenu(medlemmer);
                         break;
                     case 1:
                         opdaterResultater(medlemmer);
@@ -190,7 +193,11 @@ public ArrayList<Medlem> medlemmer=new ArrayList<>();
 
     public static ArrayList<Medlem> opretMedlem( ArrayList<Medlem> medlemmer) {
         System.out.println("kald opretMedlem metode");
-        medlemmer= Medlemsadministration.opretMedlem(medlemmer);
+        try {
+            medlemmer= Medlemsadministration.opretMedlem(medlemmer);
+        } catch (Exception e) {
+            System.out.println("hov "+e);;
+        }
         return medlemmer;
 
     }
@@ -202,7 +209,12 @@ public ArrayList<Medlem> medlemmer=new ArrayList<>();
         Scanner scn = new Scanner(System.in);
         int mnr = -1;
         mnr=scn.nextInt();
-        medlemmer= Medlemsadministration.redigerStamoplysninger(medlemmer,mnr);
+        try {
+            medlemmer= Medlemsadministration.redigerStamoplysninger(medlemmer,mnr);
+        } catch (FileNotFoundException e) {
+            System.out.println("hovsa: "+e);
+        }
+        return medlemmer;
     }
 
     public static ArrayList<Medlem> sletMedlem( ArrayList<Medlem> medlemmer) {
@@ -219,9 +231,10 @@ public ArrayList<Medlem> medlemmer=new ArrayList<>();
     public static void medlemsliste( ArrayList<Medlem> medlemmer) {
           System.out.println("Kald medlemsliste");
           Medlemsadministration.seMedlemsListe( medlemmer);
+          hovedmenu(medlemmer);
     }
 
-    public static void seRestance() {
+    public static void seRestance(ArrayList<Medlem> medlemmer) {
         System.out.println("Kald restanceliste");
     }
 
@@ -237,12 +250,44 @@ public ArrayList<Medlem> medlemmer=new ArrayList<>();
 
     }
 
-    public static void kontingentliste() {
+    public static void kontingentliste(ArrayList<Medlem> medlemmer) {
         System.out.println("Kald kontingentliste (medlemsliste??)");
     }
 
-    public static void opdaterResultater() {
-        System.out.println("Kald metode for opdater resultater");
+    public static void opdaterResultater(ArrayList<Medlem> medlemmer) {
+        Medlemsadministration.seMedlemsListe( medlemmer);
+        System.out.println("Indtast medlemsnummer");
+
+        Scanner scn = new Scanner(System.in);
+        int mnr = -1;
+        mnr=scn.nextInt();
+        Konkurrencesvømmer k=(Konkurrencesvømmer) medlemmer.get(mnr-1);
+
+        System.out.println("hvilke discpliner vil tilføje/ændre?: ");
+        System.out.println("1: brystsvømning");
+        System.out.println("2: crawl");
+        System.out.println("3: rygsvømning");
+        System.out.println("4: Butterfly");
+        int disciplinnummer=-99;
+
+        switch (scn.nextInt()){
+            case 1:
+                disciplinnummer=0;
+                break;
+            case 2:
+                disciplinnummer=1;
+                break;
+            case 3:
+                disciplinnummer=2;
+                break;
+            case 4:
+                disciplinnummer=3;
+                break;
+        }
+        System.out.println("tast 1 for træningsresultat, tast 2 for stævneresultat");
+        int trænerinput=scn.nextInt();
+        //opdaterResultater(Konkurrencesvømmer k, int disciplinnummer, int trænerinput)
+        Medlemsadministration.opdaterResultater(k,disciplinnummer,trænerinput);
     }
 
     public static void seTopFem(ArrayList<Medlem> medlemmer) {
@@ -250,9 +295,9 @@ public ArrayList<Medlem> medlemmer=new ArrayList<>();
 
         Scanner scn = new Scanner(System.in);
 
-        topFem = disciplin(scn, topFem);
-        topFem = kon(scn, topFem);
-        topFem = alder(scn, topFem);
+        topFem = disciplin(scn, topFem,medlemmer);
+        topFem = kon(scn, topFem,medlemmer);
+        topFem = alder(scn, topFem,medlemmer);
 
         Medlemsadministration.seTop5(medlemmer,topFem);
     }
@@ -265,7 +310,7 @@ public ArrayList<Medlem> medlemmer=new ArrayList<>();
         System.out.println("kald konkurrencesvømmerliste");
 
     }
-    static String disciplin(Scanner scn, String topFem) {
+    static String disciplin(Scanner scn, String topFem, ArrayList<Medlem> medlemmer) {
 
             System.out.println("Vælg Svømmedisciplin:");
             System.out.println("1: Bryst");
@@ -276,7 +321,7 @@ public ArrayList<Medlem> medlemmer=new ArrayList<>();
 
             switch (scn.nextInt()) {
                 case 0:
-                    svommeresultater();
+                    svommeresultater(medlemmer);
                     break;
                 case 1:
                     topFem = bryst(topFem);
@@ -298,7 +343,7 @@ public ArrayList<Medlem> medlemmer=new ArrayList<>();
         return topFem;
     }
 
-    static String kon(Scanner scn, String topFem) {
+    static String kon(Scanner scn, String topFem, ArrayList<Medlem> medlemmer) {
 
                 System.out.println("Vælg køn på svømmeren");
                 System.out.println("1: Mand");
@@ -307,7 +352,7 @@ public ArrayList<Medlem> medlemmer=new ArrayList<>();
 
                 switch (scn.nextInt()) {
                     case 0:
-                        svommeresultater();
+                        svommeresultater(medlemmer);
                         break;
                     case 1:
                         topFem = mand(topFem);
@@ -322,7 +367,7 @@ public ArrayList<Medlem> medlemmer=new ArrayList<>();
         return topFem;
     }
 
-    static String alder(Scanner scn, String topFem) {
+    static String alder(Scanner scn, String topFem,ArrayList<Medlem> medlemmer) {
 
                 System.out.println("Vælg alder på svømmeren");
                 System.out.println("1: Junior");
@@ -331,7 +376,7 @@ public ArrayList<Medlem> medlemmer=new ArrayList<>();
 
                 switch (scn.nextInt()) {
                     case 0:
-                        svommeresultater();
+                        svommeresultater(medlemmer);
                         break;
                     case 1:
                         topFem = junior(topFem);
