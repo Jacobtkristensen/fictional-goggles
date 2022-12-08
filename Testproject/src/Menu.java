@@ -8,14 +8,21 @@ public class Menu {
 
 
     public static void hovedmenu() {
-      /*  File memberlist=new File("medlemsliste.txt");
+       try{
+        File memberlist=new File("medlemsliste.txt");
         if (memberlist.exists()) {
             ;
             ArrayList<Medlem> medlemmer = Medlemsadministration.indlæsMedlemmer();
         }
         else {
             ArrayList<Medlem> medlemmer=new ArrayList<>();
-        }*/
+        }
+       }
+       catch (Exception e){
+           System.out.println("Der opstod en fejl: "+e);
+       }
+
+
         boolean loop = true;
 
         while (loop) {
@@ -48,8 +55,7 @@ public class Menu {
                         medlemsliste();
                         break;
                     default:
-                        System.out.println("Forker indtastning, tast 1,2,3 eller 4.");
-
+                        System.out.println("Forkert indtastning, tast 1,2,3 eller 4.");
                 }
            } catch (InputMismatchException e) {
                 System.out.println("Forkert indtastning, tast 1,2,3 eller 4.");
@@ -57,7 +63,7 @@ public class Menu {
 
         }
     }
-    public static void stamoplysninger() {
+    public static void stamoplysninger( ArrayList<Medlem> medlemmer) {
         boolean loop = true;
 
         while (loop) {
@@ -83,10 +89,10 @@ public class Menu {
                         opretMedlem();
                         break;
                     case 2:
-                        redStamoplysninger();
+                        redStamoplysninger(medlemmer);
                         break;
                     case 3:
-                        sletMedlem();
+                        medlemmer= sletMedlem(medlemmer);
                         break;
                     case 4:
                         medlemsliste();
@@ -100,7 +106,7 @@ public class Menu {
         }
     }
 
-    public static void kontingentoplysninger() {
+    public static void kontingentoplysninger( ArrayList<Medlem> medlemmer) {
 
         boolean loop = true;
 
@@ -141,7 +147,7 @@ public class Menu {
         }
     }
 
-    public static void svommeresultater() {
+    public static void svommeresultater( ArrayList<Medlem> medlemmer) {
 
         boolean loop = true;
         while(loop) {
@@ -175,7 +181,7 @@ public class Menu {
                         konkurrencesvoemmerliste();
                         break;
                     default:
-                        System.out.println("Forker indtastning, tast 1,2,3 eller 4.");
+                        System.out.println("Forkert indtastning, tast 1,2,3 eller 4.");
                 }
             } catch (InputMismatchException e) {
                 System.out.println("Forkert indtastning, tast 1,2,3 eller 4.");
@@ -184,37 +190,44 @@ public class Menu {
 
     }
 
-    public static void opretMedlem() {
+    public static ArrayList<Medlem> opretMedlem( ArrayList<Medlem> medlemmer) {
         System.out.println("kald opretMedlem metode");
+        medlemmer= Medlemsadministration.opretMedlem(medlemmer);
+        return medlemmer;
+
     }
 
-    public static int redStamoplysninger() {
+    public static ArrayList<Medlem> redStamoplysninger( ArrayList<Medlem> medlemmer) {
+        Medlemsadministration.seMedlemsListe( medlemmer);
+        System.out.println("Indtast medlemsnummer");
+
+        Scanner scn = new Scanner(System.in);
+        int mnr = -1;
+        mnr=scn.nextInt();
+        medlemmer= Medlemsadministration.redigerStamoplysninger(medlemmer,mnr);
+    }
+
+    public static ArrayList<Medlem> sletMedlem( ArrayList<Medlem> medlemmer) {
+        Medlemsadministration.seMedlemsListe( medlemmer);
         System.out.println("Indtast medlemsnummer");
 
         Scanner scn = new Scanner(System.in);
         int mnr = -1;
         scn.nextInt();
-        return mnr;
+        medlemmer= Medlemsadministration.sletMedlem( medlemmer,mnr);
+        return medlemmer;
     }
 
-    public static int sletMedlem() {
-        System.out.println("Indtast medlemsnummer");
-
-        Scanner scn = new Scanner(System.in);
-        int mnr = -1;
-        scn.nextInt();
-        return mnr;
-    }
-
-    public static void medlemsliste() {
-        System.out.println("Kald medlemsliste");
+    public static void medlemsliste( ArrayList<Medlem> medlemmer) {
+          System.out.println("Kald medlemsliste");
+          Medlemsadministration.seMedlemsListe( medlemmer);
     }
 
     public static void seRestance() {
         System.out.println("Kald restanceliste");
     }
 
-    public static void redBetaling() {
+    public static ArrayList<Medlem> redBetaling(ArrayList<Medlem> medlemmer) {
         System.out.println("kald betalingsliste");
     }
 
