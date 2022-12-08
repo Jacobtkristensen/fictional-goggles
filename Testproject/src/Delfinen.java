@@ -60,13 +60,13 @@ public class Delfinen {
 		 */
 
 
-//	ArrayList<Medlem> medlemmer=Medlemsadministration.indlæsMedlemmer();
+	ArrayList<Medlem> medlemmer=new ArrayList<>();
 
 //		for(Medlem m: medlemmer){
 //			System.out.println(m.printTilKonsol());
-		Menu ny=new Menu();
-		Menu.hovedmenu();
-		}
+
+		Menu.hovedmenu(medlemmer);
+
 
 	/*	ArrayList<Medlem> medlemmer = new ArrayList<>();
 		Scanner sc = new Scanner(System.in);
@@ -102,7 +102,7 @@ public class Delfinen {
 
 
 		//Indlæs medlemsliste, hvis tom opret nogle medlemmer.
-		Menu.hovedmenu();
+
 
 
 
