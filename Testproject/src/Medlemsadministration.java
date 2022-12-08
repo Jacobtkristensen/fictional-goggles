@@ -100,7 +100,7 @@ public class Medlemsadministration {
                     medlemmer.add(nytMedlem);
                 }
                 if (memberType.equals("PassivMedlem")) {
-                    PassivMedlem nytmedlem=new PassivMedlem(medlemnr, medlemnavn, bday, isMale, memberType, fee, hasPaid)
+                    PassivMedlem nytmedlem=new PassivMedlem(medlemnr, medlemnavn, bday, isMale, memberType, fee, hasPaid);
 
                 } else{
                     boolean[] aktivediscipliner=new boolean[4];
