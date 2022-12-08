@@ -126,7 +126,7 @@ public class Medlem implements Serializable {
 		this.navn=nytnavn;
 	}
 	public void setHarBetalt(){
-		harBetalt=true
+		harBetalt=true;
 	}
 //Skriv til fil og indlæs fra fil
 
