@@ -6,10 +6,10 @@ import java.util.Scanner;
 
 public class Menu {
 
-//public ArrayList<Medlem> medlemmer=new ArrayList<>();
+public ArrayList<Medlem> medlemmer=new ArrayList<>();
 
     public static void hovedmenu(ArrayList<Medlem> medlemmer) {
-       try{
+      /* try{
         File memberlist=new File("medlemsliste.txt");
         if (memberlist.exists()) {
 
@@ -18,8 +18,8 @@ public class Menu {
 
        }
        catch (Exception e){
-           System.out.println("Der opstod en fejl: "+e);
-       }
+           System.out.println("Der opstod en fejl i menu, : "+e);
+       }*/
 
 
         boolean loop = true;

@@ -72,7 +72,7 @@ public class Medlemsadministration {
             medlemprint.println(m);
         }
         catch (Exception e){
-            System.out.println("noget gik galt "+ e);
+            System.out.println("noget gik galt i skriv til fil"+ e);
         }
 
 
@@ -91,7 +91,8 @@ public class Medlemsadministration {
         String line = "";
         ArrayList<Medlem> medlemmer = null;
         try {
-            Scanner sc = new Scanner(new File("medlemsliste.txt"));
+            Scanner sc;
+            sc = new Scanner(new File("medlemsliste.txt"));
             medlemmer = new ArrayList<>();
 
 
@@ -115,7 +116,7 @@ public class Medlemsadministration {
                     if (memberType.equals("PassivMedlem")) {
                         PassivMedlem nytmedlem = new PassivMedlem(medlemnr, medlemnavn, bday, isMale, memberType, fee, hasPaid);
 
-                    } else {
+                    } else if (memberType.equals("Konkurrencesvømmer")){
                         boolean[] aktivediscipliner = new boolean[4];
                         LocalTime[] res = new LocalTime[4];
 
@@ -135,12 +136,13 @@ public class Medlemsadministration {
                         medlemmer.add(nytMedlem);
                     }
                     if (nsc.hasNext()) {
-                        nsc.nextLine();
+                        nsc.nextLine();//tømmer linjen for input
                     }
 
                 }
 
             }
+            System.out.println("antal indlæste: "+medlemmer.size());
             return medlemmer;
         } catch (FileNotFoundException e) {
             System.out.println("filen medlemsliste.txt blev ikke fundet");
