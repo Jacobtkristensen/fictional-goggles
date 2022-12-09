@@ -60,7 +60,8 @@ public class Medlemsadministration {
         Medlem nytmedlem = new Konkurrencesvømmer(navn, bday, gender, harBetalt, aktivdisciplin);
         nytmedlem.setType("Konkurrencesvømmer");
         skrivMedlemmerTilFil(nytmedlem);
-        medlemmer.add(nytmedlem);}
+        medlemmer.add(nytmedlem);
+        }
         return medlemmer;
         // tilføj nyt medlem til ArrayList
     }
@@ -78,7 +79,7 @@ public class Medlemsadministration {
 
 
     }
-    public static ArrayList<Medlem> indlæsMedlemmer() throws FileNotFoundException {
+    public static ArrayList<Medlem> indlæsMedlemmer(ArrayList<Medlem> medlemmer) throws FileNotFoundException {
         DateTimeFormatter tidsformat = DateTimeFormatter.ofPattern("HH:mm:ss.SSS");
         int antalMedlemmer;
         int medlemnr;
@@ -89,7 +90,7 @@ public class Medlemsadministration {
         double fee;
         boolean hasPaid;
         String line = "";
-        ArrayList<Medlem> medlemmer = null;
+       // ArrayList<Medlem> medlemmer = null;
         try {
             Scanner sc;
             sc = new Scanner(new File("medlemsliste.txt"));
@@ -142,7 +143,7 @@ public class Medlemsadministration {
                 }
 
             }
-            System.out.println("antal indlæste: "+medlemmer.size());
+
             return medlemmer;
         } catch (FileNotFoundException e) {
             System.out.println("filen medlemsliste.txt blev ikke fundet");
@@ -327,7 +328,7 @@ public class Medlemsadministration {
                         medlemprint.println(m);
                     }
                     try {
-                        medlemmer = indlæsMedlemmer();
+                        medlemmer = indlæsMedlemmer(medlemmer);
                     } catch (FileNotFoundException e) {
                         throw new RuntimeException(e);
                     }
@@ -346,7 +347,7 @@ public class Medlemsadministration {
                     for (Medlem m : medlemmer) {
                         medlemprint.println(m);
                     }
-                    medlemmer = indlæsMedlemmer();
+                    medlemmer = indlæsMedlemmer(medlemmer);
                 }
                     System.out.println("vil du ændre til konkurrencesvømmer? ");
                     rep= sc.next();
@@ -357,7 +358,7 @@ public class Medlemsadministration {
                     for (Medlem m : medlemmer) {
                         medlemprint.println(m);
                     }
-                    medlemmer = indlæsMedlemmer();
+                    medlemmer = indlæsMedlemmer(medlemmer);
                     valg=3;
                 }
                 else {
