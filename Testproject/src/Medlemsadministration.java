@@ -60,7 +60,8 @@ public class Medlemsadministration {
         Medlem nytmedlem = new Konkurrencesvømmer(navn, bday, gender, harBetalt, aktivdisciplin);
         nytmedlem.setType("Konkurrencesvømmer");
         skrivMedlemmerTilFil(nytmedlem);
-        medlemmer.add(nytmedlem);}
+        medlemmer.add(nytmedlem);
+        }
         return medlemmer;
         // tilføj nyt medlem til ArrayList
     }
@@ -72,13 +73,13 @@ public class Medlemsadministration {
             medlemprint.println(m);
         }
         catch (Exception e){
-            System.out.println("noget gik galt "+ e);
+            System.out.println("noget gik galt i skriv til fil"+ e);
         }
 
 
 
     }
-    public static ArrayList<Medlem> indlæsMedlemmer() throws FileNotFoundException {
+    public static ArrayList<Medlem> indlæsMedlemmer(ArrayList<Medlem> medlemmer) throws FileNotFoundException {
         DateTimeFormatter tidsformat = DateTimeFormatter.ofPattern("HH:mm:ss.SSS");
         int antalMedlemmer;
         int medlemnr;
@@ -89,9 +90,10 @@ public class Medlemsadministration {
         double fee;
         boolean hasPaid;
         String line = "";
-        ArrayList<Medlem> medlemmer = null;
+       // ArrayList<Medlem> medlemmer = null;
         try {
-            Scanner sc = new Scanner(new File("medlemsliste.txt"));
+            Scanner sc;
+            sc = new Scanner(new File("medlemsliste.txt"));
             medlemmer = new ArrayList<>();
 
 
@@ -115,7 +117,7 @@ public class Medlemsadministration {
                     if (memberType.equals("PassivMedlem")) {
                         PassivMedlem nytmedlem = new PassivMedlem(medlemnr, medlemnavn, bday, isMale, memberType, fee, hasPaid);
 
-                    } else {
+                    } else if (memberType.equals("Konkurrencesvømmer")){
                         boolean[] aktivediscipliner = new boolean[4];
                         LocalTime[] res = new LocalTime[4];
 
@@ -135,12 +137,13 @@ public class Medlemsadministration {
                         medlemmer.add(nytMedlem);
                     }
                     if (nsc.hasNext()) {
-                        nsc.nextLine();
+                        nsc.nextLine();//tømmer linjen for input
                     }
 
                 }
 
             }
+
             return medlemmer;
         } catch (FileNotFoundException e) {
             System.out.println("filen medlemsliste.txt blev ikke fundet");
@@ -261,13 +264,17 @@ public class Medlemsadministration {
 
 
         }
-
-        for(int i = 0; i<5; i++){
-            System.out.println(top5.get(i).printTilKonsol());
+        if(top5.size()>=5) {
+            for (int i = 0; i < 5; i++) {
+                System.out.println(top5.get(i).printTilKonsol());
+            }
         }
-
-
-    }
+        else{
+                for(int i=0;i<top5.size();i++){
+                System.out.println(top5.get(i).printTilKonsol());
+                }
+            }
+        }
 
     public static void seMedlemsListe(ArrayList<Medlem> medlemmer) {
         for(Medlem m:medlemmer){
@@ -325,7 +332,7 @@ public class Medlemsadministration {
                         medlemprint.println(m);
                     }
                     try {
-                        medlemmer = indlæsMedlemmer();
+                        medlemmer = indlæsMedlemmer(medlemmer);
                     } catch (FileNotFoundException e) {
                         throw new RuntimeException(e);
                     }
@@ -344,7 +351,7 @@ public class Medlemsadministration {
                     for (Medlem m : medlemmer) {
                         medlemprint.println(m);
                     }
-                    medlemmer = indlæsMedlemmer();
+                    medlemmer = indlæsMedlemmer(medlemmer);
                 }
                     System.out.println("vil du ændre til konkurrencesvømmer? ");
                     rep= sc.next();
@@ -355,7 +362,7 @@ public class Medlemsadministration {
                     for (Medlem m : medlemmer) {
                         medlemprint.println(m);
                     }
-                    medlemmer = indlæsMedlemmer();
+                    medlemmer = indlæsMedlemmer(medlemmer);
                     valg=3;
                 }
                 else {

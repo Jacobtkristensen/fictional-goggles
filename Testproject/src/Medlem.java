@@ -21,13 +21,13 @@ public class Medlem implements Serializable {
 
 	//Constructors. no-arg constructor must be available
 	public Medlem() {
-		this.medlemsnummer = medlemmer + 1;
-		medlemmer++;
+		this.medlemsnummer = 1;
+
 		this.navn = "Fornavn";
 		this.foedselsdag = LocalDate.now();
 		this.gender = false;
 		this.harBetalt = false;
-		this.type = "medlem";
+		this.type = "Medlemstype";
 		this.kontingent = this.beregnKontingent();
 	}
 

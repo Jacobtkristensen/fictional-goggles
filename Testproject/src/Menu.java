@@ -6,20 +6,10 @@ import java.util.Scanner;
 
 public class Menu {
 
-//public ArrayList<Medlem> medlemmer=new ArrayList<>();
+public ArrayList<Medlem> medlemmer=new ArrayList<>();
 
     public static void hovedmenu(ArrayList<Medlem> medlemmer) {
-       try{
-        File memberlist=new File("medlemsliste.txt");
-        if (memberlist.exists()) {
 
-             medlemmer = Medlemsadministration.indlæsMedlemmer();
-        }
-
-       }
-       catch (Exception e){
-           System.out.println("Der opstod en fejl: "+e);
-       }
 
 
         boolean loop = true;
@@ -192,12 +182,9 @@ public class Menu {
     }
 
     public static ArrayList<Medlem> opretMedlem( ArrayList<Medlem> medlemmer) {
-        System.out.println("kald opretMedlem metode");
-        try {
-            medlemmer= Medlemsadministration.opretMedlem(medlemmer);
-        } catch (Exception e) {
-            System.out.println("hov "+e);;
-        }
+
+        medlemmer = Medlemsadministration.opretMedlem(medlemmer);
+
         return medlemmer;
 
     }
