@@ -146,6 +146,7 @@ public class Konkurrencesvømmer extends Medlem implements Serializable {
 				resultater[i]=LocalTime.parse("23:59:59.999",tidsformat);
 			}
 		}
+		return resultater;
 	}
 
 
@@ -162,10 +163,21 @@ public class Konkurrencesvømmer extends Medlem implements Serializable {
 		System.out.println("2: crawl");
 		System.out.println("3: rygsvømning");
 		System.out.println("4: Butterfly");
-
-		switch (sc.nextInt()){
-
-
+		int valg;
+		valg=sc.nextInt();
+		switch (valg){
+			case 1:
+				System.out.println();
+				break;
+			case 2:
+				System.out.println();
+				break;
+			case 3:
+				System.out.println();
+				break;
+			case 4:
+				System.out.println();
+				break;
 		}
 	}
 	public Svømmedisciplin[] getDiscipliner() {

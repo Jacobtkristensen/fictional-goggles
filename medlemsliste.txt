@@ -1,2 +1,4 @@
 1 1 Pia 1988-10-10 false Konkurrencesvømmer 1600.0 true true false true false   brystsvømning 23:59:59.999  null  ryg 23:59:59.999  null  23:59:59 23:59:59 23:59:59 23:59:59
 2 2 IB 2002-12-01 true Konkurrencesvømmer 1600.0 true false true false true  null  crawl 23:59:59.999  null  butterfly 23:59:59.999   23:59:59 23:59:59 23:59:59 23:59:59
+3 3 Karin 1983-02-13 false Medlem 1600.0 false
+4 4 Bjarne 1992-04-22 true PassivMedlem 500.0 false
