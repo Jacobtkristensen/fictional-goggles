@@ -64,9 +64,7 @@ public class Delfinen {
 
 //		for(Medlem m: medlemmer){
 //			System.out.println(m.printTilKonsol());
-		Menu ny=new Menu();
-		Menu.hovedmenu();
-		}
+
 
 	/*	ArrayList<Medlem> medlemmer = new ArrayList<>();
 		Scanner sc = new Scanner(System.in);

@@ -162,9 +162,11 @@ public class Konkurrencesvømmer extends Medlem implements Serializable {
 		System.out.println("2: crawl");
 		System.out.println("3: rygsvømning");
 		System.out.println("4: Butterfly");
-		int valg;
-		valg=sc.nextInt();
-		switch (valg)
+
+		switch (sc.nextInt()){
+
+
+		}
 	}
 	public Svømmedisciplin[] getDiscipliner() {
 		return discipliner;
