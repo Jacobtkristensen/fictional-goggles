@@ -397,7 +397,7 @@ public class Medlemsadministration {
                 break;
             case 2:
                 System.out.println("indtast stævnenavn");
-                String stævnenavn=sc.next();
+                String stævnenavn=sc.nextLine();
                 System.out.println("indtast placering: ");
                 int placering=sc.nextInt();
                 System.out.println("indtast tid som [HH:MM:SS,nn]:");
