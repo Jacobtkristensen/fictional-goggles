@@ -117,7 +117,7 @@ public class Menu {
                 System.out.println("kontingentoplysninger.");
                 System.out.println("Hvad Ønsker du at gøre?");
                 System.out.println("1: Se restance.");
-                System.out.println("2: Redigerer betaling.");
+                System.out.println("2: Rediger betaling.");
                 System.out.println("3: Hent kontingentliste.");
                 System.out.println("0: Tilbage til Hovedmenu.");
 
