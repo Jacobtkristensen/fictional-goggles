@@ -22,6 +22,6 @@ public class Kontingenter {
 
     }
     public static void kontingentliste(ArrayList<Medlem> medlemmer) {
-        System.out.println("Kald kontingentliste (medlemsliste??)");
+        System.out.println("Det koster ekstra");
     }
     }

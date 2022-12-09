@@ -4,3 +4,4 @@
 4 4 Bjarne 1992-04-22 true PassivMedlem 500.0 false
 10 10 bo 1212-12-12 true Medlem 1200.0 false
 4 4 ALlan 1212-12-12 true Medlem 1200.0 false
+4 4 Allen 1212-12-12 true Medlem 1200.0 false
