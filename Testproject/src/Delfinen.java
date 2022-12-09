@@ -108,6 +108,5 @@ public class Delfinen {
 
 
 		System.out.println("hej");
-
 	}
 }

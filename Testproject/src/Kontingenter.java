@@ -5,7 +5,7 @@ public class Kontingenter {
     public static void seRestance(ArrayList<Medlem> medlemmer) {
         for(Medlem m: medlemmer) {
             if (!m.getHarBetalt()) {
-                m.printTilKonsol();
+                System.out.println(m.printTilKonsol());
             }
         }
     }
