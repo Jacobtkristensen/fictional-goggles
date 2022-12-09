@@ -108,7 +108,7 @@ public ArrayList<Medlem> medlemmer=new ArrayList<>();
                 System.out.println("kontingentoplysninger.");
                 System.out.println("Hvad Ønsker du at gøre?");
                 System.out.println("1: Se restance.");
-                System.out.println("2: Redigerer betaling.");
+                System.out.println("2: Rediger betaling.");
                 System.out.println("3: Hent kontingentliste.");
                 System.out.println("0: Tilbage til Hovedmenu.");
 
@@ -170,7 +170,7 @@ public ArrayList<Medlem> medlemmer=new ArrayList<>();
                         redDisciplin();
                         break;
                     case 4:
-                        konkurrencesvoemmerliste();
+                        Konkurrencesvømmer.konkurrencesvoemmerliste(medlemmer);
                         break;
                     default:
                         System.out.println("Forkert indtastning, tast 1,2,3 eller 4.");
@@ -270,12 +270,7 @@ public ArrayList<Medlem> medlemmer=new ArrayList<>();
     }
 
     public static void redDisciplin() {
-        System.out.println("kald rediger disciplin metode");
-    }
-
-    public static void konkurrencesvoemmerliste() {
-        System.out.println("kald konkurrencesvømmerliste");
-
+        System.out.println("Koster desværre ekstra...");
     }
     static String disciplin(Scanner scn, String topFem, ArrayList<Medlem> medlemmer) {
 
