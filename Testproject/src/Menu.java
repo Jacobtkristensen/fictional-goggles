@@ -50,7 +50,8 @@ public ArrayList<Medlem> medlemmer=new ArrayList<>();
                 System.out.println("Forkert indtastning, tast 1,2,3 eller 4.");
             }
 
-        }
+        }//
+
     }
     public static ArrayList<Medlem> stamoplysninger( ArrayList<Medlem> medlemmer) {
         boolean loop = true;
@@ -210,7 +211,7 @@ public ArrayList<Medlem> medlemmer=new ArrayList<>();
 
         Scanner scn = new Scanner(System.in);
         int mnr = -1;
-        scn.nextInt();
+        mnr=scn.nextInt();
         medlemmer= Medlemsadministration.sletMedlem( medlemmer,mnr);
         return medlemmer;
     }

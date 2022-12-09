@@ -27,6 +27,7 @@ public class Delfinen {
 
 		Menu.hovedmenu(medlemmer);
 
+
 		System.out.println("hej");
 	}
 }
