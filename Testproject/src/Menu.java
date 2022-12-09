@@ -169,7 +169,7 @@ public ArrayList<Medlem> medlemmer=new ArrayList<>();
                         redDisciplin();
                         break;
                     case 4:
-                        Konkurrencesvømmer.konkurrencesvoemmerliste();
+                        Konkurrencesvømmer.konkurrencesvoemmerliste(medlemmer);
                         break;
                     default:
                         System.out.println("Forkert indtastning, tast 1,2,3 eller 4.");

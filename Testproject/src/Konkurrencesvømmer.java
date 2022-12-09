@@ -187,7 +187,9 @@ public class Konkurrencesvømmer extends Medlem implements Serializable {
 
 	public static void konkurrencesvoemmerliste(ArrayList<Medlem> medlemmer) {
 		for(Medlem m: medlemmer){
-
+			if(m.getType().equals("konkurrencesvømmer")) {
+				System.out.println(m.printTilKonsol());
+			}
 		}
 		System.out.println("kald konkurrencesvømmerliste");
 	}
