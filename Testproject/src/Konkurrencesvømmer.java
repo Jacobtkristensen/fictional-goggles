@@ -2,6 +2,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -158,7 +159,7 @@ public class Konkurrencesvømmer extends Medlem implements Serializable {
 				System.out.println(getDiscipliner()[i].getDisciplinNavn());
 			}
 		}
-		System.out.println("hvilke discpliner vil tilføje/ændre?: ");
+		System.out.println("hvilke discpliner vil du tilføje/ændre?: ");
 		System.out.println("1: brystsvømning");
 		System.out.println("2: crawl");
 		System.out.println("3: rygsvømning");
@@ -182,5 +183,12 @@ public class Konkurrencesvømmer extends Medlem implements Serializable {
 	}
 	public Svømmedisciplin[] getDiscipliner() {
 		return discipliner;
+	}
+
+	public static void konkurrencesvoemmerliste(ArrayList<Medlem> medlemmer) {
+		for(Medlem m: medlemmer){
+
+		}
+		System.out.println("kald konkurrencesvømmerliste");
 	}
 }

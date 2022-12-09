@@ -179,7 +179,7 @@ public class Menu {
                         redDisciplin();
                         break;
                     case 4:
-                        konkurrencesvoemmerliste();
+                        Konkurrencesvømmer.konkurrencesvoemmerliste();
                         break;
                     default:
                         System.out.println("Forkert indtastning, tast 1,2,3 eller 4.");
@@ -282,12 +282,7 @@ public class Menu {
     }
 
     public static void redDisciplin() {
-        System.out.println("kald rediger disciplin metode");
-    }
-
-    public static void konkurrencesvoemmerliste() {
-        System.out.println("kald konkurrencesvømmerliste");
-
+        System.out.println("Koster desværre ekstra...");
     }
     static String disciplin(Scanner scn, String topFem, ArrayList<Medlem> medlemmer) {
 
