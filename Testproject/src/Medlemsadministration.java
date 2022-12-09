@@ -264,13 +264,17 @@ public class Medlemsadministration {
 
 
         }
-
-        for(int i = 0; i<5; i++){
-            System.out.println(top5.get(i).printTilKonsol());
+        if(top5.size()>=5) {
+            for (int i = 0; i < 5; i++) {
+                System.out.println(top5.get(i).printTilKonsol());
+            }
         }
-
-
-    }
+        else{
+                for(int i=0;i<top5.size();i++){
+                System.out.println(top5.get(i).printTilKonsol());
+                }
+            }
+        }
 
     public static void seMedlemsListe(ArrayList<Medlem> medlemmer) {
         for(Medlem m:medlemmer){
