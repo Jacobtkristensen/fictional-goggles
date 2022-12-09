@@ -102,7 +102,7 @@ public class Delfinen {
 
 
 		//Indlæs medlemsliste, hvis tom opret nogle medlemmer.
-		Menu.hovedmenu();
+
 
 
 
