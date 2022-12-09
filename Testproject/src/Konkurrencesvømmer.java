@@ -191,6 +191,6 @@ public class Konkurrencesvømmer extends Medlem implements Serializable {
 				System.out.println(m.printTilKonsol());
 			}
 		}
-		System.out.println("kald konkurrencesvømmerliste");
+
 	}
 }
