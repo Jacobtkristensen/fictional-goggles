@@ -129,13 +129,13 @@ public class Menu {
                         hovedmenu(medlemmer);
                         break;
                     case 1:
-                        seRestance(medlemmer);
+                        Kontingenter.seRestance(medlemmer);
                         break;
                     case 2:
-                        regBetaling(medlemmer);
+                        Kontingenter.regBetaling(medlemmer);
                         break;
                     case 3:
-                        kontingentliste(medlemmer);
+                        Kontingenter.kontingentliste(medlemmer);
                         break;
                     default:
                         System.out.println("Forkert indtastning, tast 1,2 eller 3.");
@@ -233,27 +233,6 @@ public class Menu {
           Medlemsadministration.seMedlemsListe( medlemmer);
           hovedmenu(medlemmer);
     }
-
-    public static void seRestance(ArrayList<Medlem> medlemmer) {
-        System.out.println("Kald restanceliste");
-    }
-
-    public static ArrayList<Medlem> regBetaling(ArrayList<Medlem> medlemmer) {
-        Medlemsadministration.seMedlemsListe( medlemmer);
-        System.out.println("Indtast medlemsnummer");
-
-        Scanner scn = new Scanner(System.in);
-        int mnr = -1;
-        scn.nextInt();
-        medlemmer.get(mnr-1).setHarBetalt();
-        return medlemmer;
-
-    }
-
-    public static void kontingentliste(ArrayList<Medlem> medlemmer) {
-        System.out.println("Kald kontingentliste (medlemsliste??)");
-    }
-
     public static void opdaterResultater(ArrayList<Medlem> medlemmer) {
         Medlemsadministration.seMedlemsListe( medlemmer);
         System.out.println("Indtast medlemsnummer");
